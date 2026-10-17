@@ -1,0 +1,2965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For My Love ❤️</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+ min-height:100vh;font-family:Arial;color:white;overflow-x:hidden;
+ background:radial-gradient(circle at 50% 10%,#ff4d7830,transparent 35%),
+ linear-gradient(135deg,#120007,#420017,#150008)
+}
+.hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:50}
+.heart{position:absolute;bottom:-30px;color:#ff5c88;animation:up 8s linear forwards;opacity:.6}
+@keyframes up{to{transform:translateY(-110vh) rotate(20deg);opacity:0}}
+
+.page{
+ min-height:100vh;display:flex;justify-content:center;align-items:center;
+ padding:25px;position:relative;z-index:2
+}
+.card,.welcome{
+ width:450px;max-width:94%;padding:35px 25px;text-align:center;
+ border-radius:28px;background:#370014aa;border:1px solid #ff6d9745;
+ backdrop-filter:blur(18px);box-shadow:0 0 35px #ff286633,0 25px 70px #0009
+}
+button{
+ border:0;border-radius:50px;padding:13px 28px;font-size:15px;
+ font-weight:bold;cursor:pointer;transition:.25s
+}
+button:hover{transform:scale(1.04)}
+button:disabled{cursor:default}
+.yes{color:white;background:linear-gradient(135deg,#ff4b82,#ff1255);box-shadow:0 8px 25px #ff185555}
+.no{color:white;background:#ffffff12;border:1px solid #ffffff35}
+.small{color:#ffabc5;letter-spacing:3px;font-size:11px;margin-bottom:10px}
+p{color:#ffdce7;line-height:1.6;margin-bottom:20px}
+
+.lock{font-size:55px;margin-bottom:15px;animation:pulse 1.5s infinite}
+@keyframes pulse{50%{transform:scale(1.1)}}
+.welcome{width:430px;padding:45px 28px}
+.welcome h1{font:italic 42px Georgia;margin-bottom:15px}
+.code{display:flex;justify-content:center;gap:10px;margin:25px 0}
+.code input{
+ width:52px;height:58px;border-radius:14px;border:1px solid #ffffff40;
+ background:#ffffff12;color:white;text-align:center;font-size:24px;outline:none
+}
+.error{color:#ff91ac;margin-top:15px}
+.hint{font-size:11px;color:#b98c9c;margin-top:20px}
+
+.couple{width:250px;height:165px;position:relative;margin:0 auto 15px}
+.bear{
+ position:absolute;bottom:3px;width:100px;height:115px;
+ border-radius:50px 50px 30px 30px
+}
+.brown{left:20px;background:#c99576}
+.white{right:20px;background:#fff8f5}
+.bear:before,.bear:after{
+ content:"";position:absolute;top:-16px;width:40px;height:40px;
+ border-radius:50%;z-index:-1
+}
+.brown:before,.brown:after{background:#c99576}
+.white:before,.white:after{background:#fff8f5}
+.bear:before{left:3px}.bear:after{right:3px}
+.face{position:absolute;top:38px;left:0;right:0}
+.eye{position:absolute;width:9px;height:13px;background:#3a2020;border-radius:50%}
+.eye.left{left:25px}.eye.right{right:25px}
+.mouth{
+ position:absolute;left:50%;top:23px;transform:translateX(-50%);
+ width:18px;height:13px;border-bottom:3px solid #71333d;border-radius:50%
+}
+.cheek{position:absolute;top:63px;width:23px;height:14px;border-radius:50%;background:#ffaaa9}
+.cheek.left{left:10px}.cheek.right{right:10px}
+.coupleHeart{
+ position:absolute;top:-3px;left:50%;transform:translateX(-50%);
+ font-size:35px;animation:beat 1.3s infinite
+}
+@keyframes beat{50%{transform:translateX(-50%) scale(1.2)}}
+
+.questionTitle{
+ font-size:32px;background:linear-gradient(90deg,#fff,#ff9fbc,#fff);
+ -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px
+}
+.questionBox{
+ padding:18px;margin:18px 0 22px;border-radius:18px;
+ background:#ffffff0d;border:1px solid #ffffff18
+}
+.buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+#noScreen,#surprise{display:none}
+.noEmoji{font-size:48px;animation:shake .7s infinite}
+@keyframes shake{25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+.noCard h1{font-size:35px;color:#ff7299;margin-bottom:18px}
+
+.birthdayPage{min-height:100vh;padding:65px 7%}
+.birthdayTitle{text-align:center;margin-bottom:40px}
+.birthdayTitle h1{
+ font-size:clamp(40px,6vw,65px);
+ background:linear-gradient(90deg,#fff,#ff9fbc,#fff);
+ -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:15px
+}
+.birthdayTitle h1 span{display:block;font:italic 1em Georgia}
+.birthdayContent{
+ max-width:950px;margin:auto;display:grid;
+ grid-template-columns:1fr 1fr;gap:45px;align-items:center
+}
+.photoFrame{
+ width:min(400px,100%);margin:auto;padding:10px;background:white;
+ box-shadow:0 18px 45px #0009;transform:rotate(-2deg);position:relative
+}
+.photoFrame img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
+.photoHeart{
+ position:absolute;right:-18px;top:-18px;width:52px;height:52px;border-radius:50%;
+ display:flex;align-items:center;justify-content:center;background:#ff2763
+}
+.photoCaption{text-align:center;color:#ffcbd9;font-size:13px;font-style:italic;margin-top:18px}
+.letter{
+ width:100%;max-width:none;min-height:500px;padding:30px 28px;
+ color:#4a202b;background:linear-gradient(135deg,#fff9f5,#ffeef2);
+ border-radius:5px 22px 5px 22px;box-shadow:0 20px 45px #0008;
+ transform:rotate(1deg);position:relative
+}
+.letterTop{position:absolute;right:18px;top:13px;font-size:22px}
+.letterDate{color:#a85d72;font-size:10px;margin-bottom:7px}
+.letter h2{font:italic 23px Georgia;color:#7d3048;margin-bottom:7px}
+.letterLine{width:55px;height:2px;background:#e75b83;margin-bottom:12px}
+.letter p{white-space:pre-line;color:#63313e;font:14px/1.5 Georgia;margin:0;overflow-wrap:anywhere}
+.letterEnd{margin-top:18px;text-align:right;color:#a33f5e;font:italic 14px Georgia}
+
+.reasons,.thoughts,.games{padding:75px 7%}
+.reasonTitle,.thoughtsTitle,.gameTitle{text-align:center;margin-bottom:35px}
+.reasonTitle h2,.thoughtsTitle h2,.gameTitle h2{font:italic 42px Georgia;margin-bottom:8px}
+.reasonGrid,.thoughtGrid,.gameGrid{
+ max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px
+}
+.reasonCard{
+ min-height:175px;padding:25px 15px;border-radius:22px;text-align:center;cursor:pointer;
+ background:#ffffff0b;border:1px solid #ff789933;box-shadow:0 12px 30px #0006;
+ transition:.35s;display:flex;flex-direction:column;justify-content:center;align-items:center
+}
+.reasonCard:hover{transform:translateY(-8px);background:#ff4d7818}
+.reasonIcon{font-size:40px;margin-bottom:12px}
+.reasonCard h3{font-size:18px;margin-bottom:7px}
+.reasonCard span{font-size:10px;color:#ff9db8;letter-spacing:1px}
+
+.reasonPopup,.gamePopup{
+ display:none;position:fixed;inset:0;z-index:100;background:#080005d9;
+ backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px
+}
+.popupBox{
+ width:420px;max-width:95%;padding:32px 25px;text-align:center;border-radius:25px;
+ background:linear-gradient(145deg,#4b001d,#21000e);
+ border:1px solid #ff789955;box-shadow:0 0 50px #ff286655
+}
+.popupIcon{font-size:45px;margin-bottom:8px}
+.popupBox h2{font:italic 28px Georgia;color:#ffabc5;margin-bottom:14px}
+.close{background:#ffffff12;border:1px solid #ffffff30;color:white}
+
+/* THOUGHTS - SINGLE REVEAL BOX */
+.thoughtRevealWrap{
+ max-width:900px;margin:auto;display:flex;justify-content:center;
+}
+.thoughtRevealBox{
+ width:100%;max-width:650px;padding:32px 25px;text-align:center;
+ border-radius:24px;cursor:pointer;
+ background:#ffffff0b;border:1px solid #e5a1b233;
+ box-shadow:0 12px 30px #16050c88;
+ transition:.35s;
+}
+.thoughtRevealBox:hover{
+ transform:translateY(-5px);
+ background:#c95e7b18;
+ border-color:#e5a1b255;
+ box-shadow:0 18px 40px #16050caa,0 0 25px #c95e7b22;
+}
+.thoughtRevealIcon{font-size:42px;margin-bottom:10px}
+.thoughtRevealBox h2{
+ font:italic 36px Georgia;color:#f0c5cf;margin-bottom:10px;
+}
+.thoughtRevealBox p{
+ margin-bottom:12px;color:#f4d8df;
+}
+.thoughtRevealHint{
+ font-size:10px;letter-spacing:2px;color:#e8a5b6;
+}
+
+/* THOUGHTS */
+.thoughts{background:#08000422}
+.thoughtsTitle{margin-bottom:22px}
+.thoughtGrid{display:block;max-width:900px}
+.thoughtCard{
+ background:#ffffff0b;border:1px solid #ff789933;border-radius:20px;
+ padding:18px 20px;margin:12px 0;cursor:pointer
+}
+.thoughtCard h3{
+ font-size:17px;color:#ffdce7;line-height:1.45;margin:0
+}
+.thoughtContent{display:none;margin-top:14px}
+.thoughtCard.open .thoughtContent{display:block}
+.thoughtOption{
+ display:block;width:100%;text-align:left;margin:6px 0;padding:11px 14px;
+ border-radius:12px;background:#ffffff0b;border:1px solid #ffffff18;
+ color:white;box-shadow:none;font-weight:normal
+}
+.thoughtOption:hover{background:#ff47781c;transform:none}
+.thoughtOption.selected{
+ background:linear-gradient(135deg,#ff477d,#c91d57);
+ border-color:#ffabc5;box-shadow:0 0 15px #ff477855
+}
+.thoughtSaved{font-size:11px;color:#ffabc5;margin-top:8px;text-align:right}
+.thoughtOpenHint{font-size:10px;color:#ff9db8;margin-top:7px}
+
+.games{background:#08000455}
+.gameGrid{grid-template-columns:repeat(2,1fr)}
+.gameCard{
+ padding:28px 20px;border-radius:24px;text-align:center;
+ background:#ffffff0b;border:1px solid #ff789933;box-shadow:0 12px 30px #0006
+}
+.gameIcon{font-size:45px;margin-bottom:12px}
+.gameCard h3{font-size:21px;margin-bottom:8px}
+.gameCard p{font-size:13px}
+.score{color:#ffabc5;margin:12px}
+.playBtn{padding:10px 22px;font-size:13px}
+.gameControls{display:flex;justify-content:center;gap:8px;margin:10px 0;flex-wrap:wrap}
+.gameControls button{padding:8px 16px;font-size:11px}
+.pauseBtn{background:#ffffff15;color:white;border:1px solid #ffffff30}
+.closeGame{background:#ffffff12;color:#ffb3c8;border:1px solid #ff789955}
+.gameLocked{opacity:.45;filter:grayscale(.4);pointer-events:none}
+
+#treasureGame,#balloonGame,#memoryGameBox,#sequenceGame{
+ display:none;margin-top:18px
+}
+.treasureInfo{font-size:11px;color:#ffabc5;margin-bottom:10px}
+.treasureArena{
+ height:310px;position:relative;overflow:hidden;border-radius:20px;
+ border:1px solid #ff789955;
+ background:radial-gradient(circle at 50% 40%,#ff47781c,transparent 55%),#17000b;
+ touch-action:none
+}
+.player{
+ position:absolute;bottom:7px;left:50%;width:110px;height:115px;
+ transform:translateX(-50%);z-index:10;user-select:none;cursor:grab
+}
+.boyFace{
+ position:absolute;top:0;left:50%;transform:translateX(-50%);
+ width:58px;height:58px;border-radius:50%;overflow:hidden;border:3px solid #ffd0dc;
+ background:#f2c2b0;box-shadow:0 0 8px #ffb2c8,0 0 20px #ff477866;z-index:4
+}
+.boyFace img{width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block}
+.heartBucket{
+ position:absolute;bottom:0;left:50%;transform:translateX(-50%) rotate(-2deg);
+ width:78px;height:60px;border-radius:10px 10px 22px 22px;
+ background:linear-gradient(145deg,#ffabc2,#ff477d 55%,#e91e63);
+ border:2px solid #ffd5df;box-shadow:0 0 12px #ff4778,0 0 25px #ff477855,inset 0 3px 8px #ffffff55;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ z-index:5;color:white;line-height:10px
+}
+.heartBucket:before{
+ content:"";position:absolute;width:63px;height:28px;border:3px solid #ffd9e4;
+ border-bottom:0;border-radius:50%;top:-18px;left:5px
+}
+.heartBucket span{font-size:7px;font-weight:bold;letter-spacing:1.2px}
+.heartBucket b{font-size:20px;line-height:18px}
+.fallingTreasure{
+ position:absolute;font-size:28px;user-select:none;z-index:8;
+ animation:treasureSpin .7s infinite alternate
+}
+@keyframes treasureSpin{from{transform:scale(.9) rotate(-8deg)}to{transform:scale(1.08) rotate(8deg)}}
+
+.balloonArena{
+ height:330px;position:relative;overflow:hidden;border-radius:20px;
+ border:1px solid #ff789955;
+ background:radial-gradient(circle at 50% 40%,#ff477820,transparent 60%),#17000b;
+ touch-action:manipulation
+}
+.balloon{
+ position:absolute;font-size:42px;user-select:none;z-index:5;
+ animation:balloonFloat 1.5s infinite alternate
+}
+@keyframes balloonFloat{from{margin-top:3px}to{margin-top:-7px}}
+.popEffect{position:absolute;font-size:30px;pointer-events:none;animation:pop .45s forwards;z-index:20}
+@keyframes pop{0%{transform:scale(.5);opacity:1}100%{transform:scale(1.8);opacity:0}}
+
+.memoryBoard{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:450px;margin:14px auto
+}
+.memoryCard{
+ height:85px;border:0;border-radius:15px;padding:0;
+ background:linear-gradient(145deg,#ff477d,#a91e4c);
+ box-shadow:0 6px 15px #0007;color:white;font-size:29px
+}
+.memoryCard.matched{background:linear-gradient(145deg,#ffb0c7,#ff477d);box-shadow:0 0 18px #ff719955}
+.memoryCard.flipped{background:#fff1f5;color:#6e1937}
+.memoryMessage{font-size:11px;color:#ffb2c9;min-height:16px}
+
+/* GAME 4 - compact spacing */
+.sequenceArea{
+ padding:12px 10px;border-radius:20px;border:1px solid #ff789955;
+ background:radial-gradient(circle,#ff47781c,transparent 60%),#17000b
+}
+.levelText{font-size:13px;color:#ffb5ca;font-weight:bold;margin-bottom:6px}
+.sequenceShow{
+ min-height:70px;display:flex;justify-content:center;align-items:center;
+ gap:5px;flex-wrap:wrap;margin-bottom:5px
+}
+.sequenceObject{
+ font-size:30px;width:42px;height:42px;display:flex;align-items:center;
+ justify-content:center;border-radius:10px;background:#ffffff0d;border:1px solid #ff789933
+}
+.sequenceHint{font-size:11px;color:#ffabc5;min-height:24px;margin-bottom:5px}
+.sequenceButtons{
+ display:grid;grid-template-columns:repeat(5,1fr);gap:6px;max-width:330px;margin:auto
+}
+.seqBtn{
+ padding:9px 3px;border-radius:12px;background:#ffffff0d;
+ border:1px solid #ff789933;color:white;font-size:23px
+}
+.seqBtn:hover{background:#ff477833}
+.seqBtn.correctFlash{background:#ff477855;border-color:#ffabc5;transform:scale(.94)}
+.lifeText{color:#ffabc5;font-size:11px;margin:5px}
+.nextLevel{display:none;margin-top:8px}
+.selectedLabel{font-size:10px;color:#ffabc5;margin:3px 0}
+.selectedSequence{
+ min-height:35px;display:flex;justify-content:center;
+ align-items:center;flex-wrap:wrap;gap:2px;margin-bottom:4px
+}
+.selectedItem{
+ display:inline-flex;align-items:center;justify-content:center;
+ width:32px;height:32px;margin:2px;border-radius:8px;
+ background:#ff477833;border:1px solid #ff789955;font-size:19px
+}
+
+.end{padding:70px 20px;text-align:center}
+.end h2{font:italic 38px Georgia;color:#ffabc5}
+
+@media(max-width:800px){
+ .birthdayContent{grid-template-columns:1fr}
+ .letter{margin:auto;transform:none}
+ .reasonGrid,.gameGrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:500px){
+ .welcome{padding:38px 20px}.welcome h1{font-size:35px}
+ .code{gap:7px}.code input{width:48px;height:54px}
+ .questionTitle{font-size:28px}.birthdayPage{padding:50px 20px}
+ .birthdayTitle h1{font-size:42px}
+ .reasonGrid,.gameGrid{grid-template-columns:1fr 1fr;gap:12px}
+ .reasonCard{min-height:145px;padding:15px 8px}
+ .reasonCard h3{font-size:14px}.reasonIcon{font-size:32px}
+ .gameCard{padding:20px 10px}.gameCard h3{font-size:17px}
+ .treasureArena,.balloonArena{height:300px}
+ .memoryBoard{gap:6px}.memoryCard{height:65px;font-size:24px}
+ .sequenceButtons{grid-template-columns:repeat(5,1fr)}
+ .sequenceObject{font-size:25px;width:37px;height:37px}
+ .thoughtCard{padding:16px}.thoughtCard h3{font-size:15px}
+ .thoughtOption{font-size:13px;padding:10px 12px}
+}
+@media(max-width:360px){
+ .reasonGrid,.gameGrid{grid-template-columns:1fr}
+ .memoryCard{height:58px}
+}
+
+/* =========================================================
+   AESTHETIC BLUSH ROSE + CREAM THEME
+   ONLY COLORS CHANGED — ALL EXISTING CONTENT/FUNCTIONS PRESERVED
+   ========================================================= */
+body{color:#513C43;background:radial-gradient(circle at 15% 15%,#EFD6DD55,transparent 30%),radial-gradient(circle at 85% 80%,#E7C9D355,transparent 30%),linear-gradient(135deg,#F8EEF1,#FFF8F5,#F5E7EB)}
+.heart{color:#B86F7D;opacity:.55}
+.card,.welcome{background:rgba(255,253,251,.88);border-color:#D9A7B188;box-shadow:0 20px 60px #9B657522,0 5px 20px #B86F7D18}
+p{color:#654C54}.small{color:#A45F70}
+.yes{color:#fff;background:linear-gradient(135deg,#C98593,#A95F70);box-shadow:0 8px 25px #B86F7D35}.no{color:#704552;background:#FFFFFFAA;border-color:#D9A7B1}
+.code input{background:#FFF9FA;color:#704552;border-color:#D9A7B1}.error{color:#B45E70}.hint{color:#9B7A83}
+.questionTitle,.birthdayTitle h1{background:linear-gradient(90deg,#704552,#B86F7D,#C9A86A,#B86F7D,#704552);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.questionBox{background:#FFFFFF80;border-color:#D9A7B155}.noCard h1{color:#A95F70}
+.photoCaption{color:#9B6674}.photoHeart{background:#B86F7D}
+.letter{width:100%;max-width:none;min-height:500px;color:#513C43;background:linear-gradient(135deg,#FFFDFC,#F9E9ED);box-shadow:0 20px 45px #8E667233}.letterDate{color:#A45F70}.letter h2{color:#704552}.letterLine{background:#C9A86A}.letter p{color:#654C54}.letterEnd{color:#A45F70}
+.reasonTitle h2,.thoughtsTitle h2,.gameTitle h2{color:#704552}
+.reasonCard{background:rgba(255,253,251,.78);border-color:#D9A7B155;box-shadow:0 12px 30px #8E667222}.reasonCard:hover{background:#F3DDE2AA}.reasonCard span{color:#A45F70}
+.reasonPopup,.gamePopup{background:#4B3444AA}.popupBox{background:linear-gradient(145deg,#FFFDFC,#F7E7EB);border-color:#D9A7B1;box-shadow:0 0 50px #8E667255}.popupBox h2{color:#704552}.close{background:#704552;border-color:#704552;color:white}
+.thoughts{background:#EEDDE355}.thoughtCard{background:rgba(255,253,251,.80);border-color:#D9A7B155}.thoughtCard h3{color:#513C43}.thoughtOpenHint,.thoughtSaved{color:#A45F70}.thoughtOption{background:#FFFDFC;border-color:#E0C2CA;color:#654C54}.thoughtOption:hover{background:#F4E1E6}.thoughtOption.selected{background:linear-gradient(135deg,#C98593,#A95F70);border-color:#D9A7B1;box-shadow:0 0 15px #B86F7D35;color:white}
+.games{background:#E9D5DC55}.gameCard{background:rgba(255,253,251,.82);border-color:#D9A7B155;box-shadow:0 12px 30px #8E667222}.score{color:#A45F70}.pauseBtn{background:#F2E4E7;color:#704552;border-color:#D9A7B1}.closeGame{background:#FFF8F5;color:#A45F70;border-color:#D9A7B1}
+.treasureArena,.balloonArena{border-color:#D9A7B1;background:radial-gradient(circle at 50% 40%,#D9A7B133,transparent 60%),#F4E3E7}.treasureInfo{color:#A45F70}
+.heartBucket{background:linear-gradient(145deg,#D9A7B1,#B86F7D 55%,#A95F70);border-color:#F7DDE3;box-shadow:0 0 12px #B86F7D55,0 0 25px #B86F7D22,inset 0 3px 8px #FFFFFF55}.boyFace{border-color:#F2D6DD;box-shadow:0 0 8px #D9A7B1,0 0 20px #B86F7D33}
+.memoryCard{background:linear-gradient(145deg,#C98593,#A95F70);box-shadow:0 6px 15px #8E667233}.memoryCard.matched{background:linear-gradient(145deg,#E7BDC6,#C98593);box-shadow:0 0 18px #B86F7D44}.memoryCard.flipped{background:#FFF8F5;color:#704552}.memoryMessage{color:#A45F70}
+.sequenceArea{border-color:#D9A7B1;background:radial-gradient(circle,#D9A7B133,transparent 60%),#F4E3E7}.levelText,.sequenceHint,.selectedLabel,.lifeText{color:#A45F70}.sequenceObject{background:#FFF8F5;border-color:#D9A7B155}.sequenceButtons .seqBtn{background:#FFF8F5;border-color:#D9A7B155;color:#704552}.sequenceButtons .seqBtn:hover{background:#F0D9DF}.seqBtn.correctFlash{background:#D9A7B155;border-color:#B86F7D}.selectedItem{background:#E8C4CC;border-color:#D9A7B1}.end h2{color:#704552}
+
+/* AESTHETIC MEDIUM ROSE THEME - COLORS ONLY */
+body{color:#fff;background:radial-gradient(circle at 20% 10%,#7b334955,transparent 32%),radial-gradient(circle at 85% 80%,#5c263b55,transparent 35%),linear-gradient(135deg,#260914,#4b162b,#24101b)}
+.heart{color:#e99aae;opacity:.65}
+.card,.welcome{background:#421329dd;border:1px solid #d47b9255;box-shadow:0 0 35px #b64e6b33,0 25px 70px #17050dcc}
+p{color:#f4d8df}.small{color:#e5a1b2}.yes{background:linear-gradient(135deg,#d47791,#b44d6d);box-shadow:0 8px 25px #b84f6a55}.no{color:#f7dfe5;background:#ffffff12;border:1px solid #e5a1b244}
+.code input{background:#ffffff10;color:#fff;border:1px solid #e5a1b244}.error{color:#ff9eb3}.hint{color:#c89aa7}
+.questionTitle,.birthdayTitle h1{background:linear-gradient(90deg,#fff,#f0a0b5,#e7c28b,#f0a0b5,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.questionBox{background:#ffffff0c;border:1px solid #e5a1b222}.noCard h1{color:#ee91a7}
+.photoCaption{color:#e8b6c2}.photoHeart{background:#c95e7b}
+.letter{color:#5a303b;background:linear-gradient(135deg,#fff7f4,#f7dfe5);box-shadow:0 20px 45px #13050a99}.letterDate{color:#9e4f66}.letter h2{color:#73384d}.letterLine{background:#c99a5d}.letter p{color:#633844}.letterEnd{color:#9e4f66}
+.reasonTitle h2,.thoughtsTitle h2,.gameTitle h2{color:#f0c5cf}
+.reasonCard,.thoughtCard,.gameCard{background:#ffffff0b;border:1px solid #e5a1b233;box-shadow:0 12px 30px #16050c88}.reasonCard:hover{background:#c95e7b18}.reasonCard span,.thoughtOpenHint,.thoughtSaved,.score,.treasureInfo,.memoryMessage,.levelText,.sequenceHint,.selectedLabel,.lifeText{color:#e8a5b6}
+.reasonPopup,.gamePopup{background:#10040bcf}.popupBox{background:linear-gradient(145deg,#5a1b35,#351020);border:1px solid #e5a1b255;box-shadow:0 0 50px #b64e6b55}.popupBox h2{color:#f0aabd}.close{background:#ffffff12;border:1px solid #e5a1b244;color:#fff}
+.thoughts{background:#16070d44}.thoughtCard h3{color:#f4d8df}.thoughtOption{background:#ffffff0a;border:1px solid #e5a1b222;color:#fff}.thoughtOption:hover{background:#c95e7b1c}.thoughtOption.selected{background:linear-gradient(135deg,#d47791,#a94363);border-color:#f0b1c0;box-shadow:0 0 15px #c95e7b55}
+.games{background:#12050a55}.pauseBtn{background:#ffffff12;color:#fff;border:1px solid #e5a1b244}.closeGame{background:#ffffff0b;color:#f0b1c0;border:1px solid #e5a1b244}
+.treasureArena,.balloonArena{border:1px solid #e5a1b244;background:radial-gradient(circle at 50% 40%,#c95e7b22,transparent 55%),#24101a}.heartBucket{background:linear-gradient(145deg,#e8a0b4,#c95e7b 55%,#a94363);border:2px solid #f6ccd6;box-shadow:0 0 12px #c95e7b,0 0 25px #c95e7b44,inset 0 3px 8px #ffffff55}.boyFace{border:3px solid #f0c3ce;box-shadow:0 0 8px #d47791,0 0 20px #c95e7b55}
+.memoryCard{background:linear-gradient(145deg,#d47791,#a94363);box-shadow:0 6px 15px #16050caa}.memoryCard.matched{background:linear-gradient(145deg,#e8a0b4,#d47791);box-shadow:0 0 18px #d4779155}.memoryCard.flipped{background:#fff1f4;color:#6e1937}
+.sequenceArea{border:1px solid #e5a1b244;background:radial-gradient(circle,#c95e7b22,transparent 60%),#24101a}.sequenceObject,.sequenceButtons .seqBtn{background:#ffffff0b;border:1px solid #e5a1b233;color:#fff}.sequenceButtons .seqBtn:hover{background:#c95e7b33}.seqBtn.correctFlash{background:#c95e7b55;border-color:#f0b1c0}.selectedItem{background:#c95e7b33;border:1px solid #e5a1b244}.end h2{color:#f0b0c0}
+
+/* =========================================================
+   SCRAPBOOK / BIRTHDAY BOARD THEME
+   Theme-only update + password photo presentation.
+   Existing content, games and functionality are preserved.
+   ========================================================= */
+body{
+ color:#493b3d;
+ background:
+   radial-gradient(circle at 8% 12%,#ffd9e755,transparent 22%),
+   radial-gradient(circle at 92% 18%,#d8ecf055,transparent 22%),
+   radial-gradient(circle at 50% 95%,#ffe8c955,transparent 30%),
+   linear-gradient(135deg,#ead7d2 0%,#f7e8df 48%,#dce8e6 100%);
+}
+.hearts{opacity:.82}
+.heart{color:#d96f86;opacity:.58}
+
+/* Password / welcome board */
+.scrapbookWelcome{
+ width:min(920px,96%);
+ min-height:560px;
+ padding:48px 55px 42px 55px;
+ position:relative;
+ overflow:hidden;
+ background:
+   linear-gradient(135deg,#fffaf1f5,#f9e8e2f5),
+   #fffaf1;
+ border:1px solid #d8b8ad;
+ border-radius:6px 22px 7px 20px;
+ box-shadow:0 20px 55px #75565a35,0 3px 0 #ffffff99 inset;
+ transform:rotate(-.25deg);
+}
+.scrapbookWelcome:before{
+ content:"";
+ position:absolute;
+ left:28px;top:32px;bottom:32px;
+ width:37%;
+ border-radius:12px;
+ background:
+   linear-gradient(#ffffff22,#ffffff22),
+   url('boy.jpeg') center/cover no-repeat;
+ box-shadow:0 10px 28px #63484a35;
+ transform:rotate(-2.2deg);
+ border:9px solid #fffdf8;
+ z-index:0;
+}
+.scrapbookWelcome:after{
+ content:"♥  ✦  ♡";
+ position:absolute;
+ left:47px;bottom:48px;
+ font-size:23px;letter-spacing:8px;
+ color:#d97a89;
+ transform:rotate(-7deg);
+ z-index:1;
+}
+.scrapbookWelcome > *{
+ position:relative;
+ z-index:2;
+ margin-left:42%;
+ max-width:53%;
+}
+.scrapbookWelcome .lock{font-size:52px;margin-top:0}
+.scrapbookWelcome .small{
+ color:#9a6d76;
+ letter-spacing:4px;
+}
+.scrapbookWelcome h1{
+ color:#493b3d;
+ text-shadow:none;
+ font-size:43px;
+}
+.scrapbookWelcome p{color:#70595d}
+.scrapbookWelcome .code input{
+ background:#fffdf9;
+ color:#704b55;
+ border:1px solid #cfa9a8;
+ box-shadow:0 3px 10px #76525a12 inset;
+}
+.scrapbookWelcome .hint{color:#9d777c}
+.scrapbookWelcome form button{
+ background:#4f7780;
+ color:#fffdf9;
+ box-shadow:0 8px 20px #4f778033;
+}
+.scrapbookWelcome .error{color:#b85d69}
+
+/* scrapbook tape/details */
+.scrapbookWelcome .lock:after{
+ content:"";
+ display:block;
+ width:62px;height:10px;
+ margin:-4px auto 0;
+ background:#e6b7a8aa;
+ transform:rotate(-3deg);
+ border-radius:2px;
+}
+
+/* Main question page */
+.card{
+ background:#fffaf1ee;
+ border:1px solid #d8b8ad;
+ box-shadow:0 18px 50px #6b505333;
+ color:#4f4143;
+}
+.questionTitle,.birthdayTitle h1{
+ background:linear-gradient(90deg,#4d6f78,#b26b78,#c19a62,#b26b78,#4d6f78);
+ -webkit-background-clip:text;
+ -webkit-text-fill-color:transparent;
+}
+.questionBox{background:#fff8f055;border-color:#d9bbb155}
+.yes{background:linear-gradient(135deg,#b86e7d,#8e5665);box-shadow:0 8px 22px #8e566533}
+.no{color:#5d4a4d;background:#ffffff88;border-color:#cdb4ae}
+
+/* Birthday page = handmade paper / scrapbook board */
+.birthdayPage{
+ background:
+   radial-gradient(circle at 12% 25%,#ffffff55,transparent 18%),
+   radial-gradient(circle at 90% 70%,#f2c9d455,transparent 20%);
+}
+.birthdayTitle .small{color:#8c6c70}
+.birthdayTitle p{color:#6d595c}
+.birthdayContent{
+ max-width:1000px;
+ gap:55px;
+ align-items:center;
+}
+.photoFrame{
+ background:#fffdf7;
+ padding:12px 12px 38px;
+ border:1px solid #d7c1b5;
+ box-shadow:0 18px 38px #5c454533;
+ transform:rotate(-3deg);
+}
+.photoFrame:after{
+ content:"Happy Birthday ♥";
+ position:absolute;
+ bottom:9px;left:0;right:0;
+ text-align:center;
+ font:italic 16px Georgia;
+ color:#6e7772;
+}
+.photoHeart{background:#b86e7d;box-shadow:0 5px 15px #8e566533}
+.photoCaption{color:#7d6468}
+.letter{
+ background:
+   linear-gradient(135deg,#fffdf6,#f8eee7),
+   #fffdf6;
+ border:1px solid #d9c1b7;
+ box-shadow:0 18px 38px #5c45452b;
+ color:#4d4142;
+ border-radius:4px 18px 5px 18px;
+}
+.letter h2{color:#5c6970}
+.letterLine{background:#c59b5d}
+.letter p{color:#5d4b4e}
+.letterDate,.letterEnd{color:#a36572}
+
+/* Reasons / thoughts / games: same layouts, scrapbook colors */
+.reasonTitle h2,.thoughtsTitle h2,.gameTitle h2{color:#536f75}
+.reasonCard,.thoughtCard,.gameCard{
+ background:#fffaf1b8;
+ border:1px solid #d5bbb2;
+ box-shadow:0 10px 28px #63494a1f;
+ color:#514345;
+}
+.reasonCard:hover{background:#f4dedc}
+.reasonCard span,.thoughtOpenHint,.thoughtSaved,.score,.treasureInfo,.memoryMessage,.levelText,.sequenceHint,.selectedLabel,.lifeText{color:#a56774}
+.reasonPopup,.gamePopup{background:#493b3d99}
+.popupBox{background:linear-gradient(145deg,#fffaf2,#f5e2e1);border-color:#d5b4ad;box-shadow:0 0 45px #60484a55}
+.popupBox h2{color:#566f74}
+.close{background:#536f75;border-color:#536f75;color:#fff}
+.thoughts{background:#f0dfda55}
+.thoughtCard h3{color:#4e4143}
+.thoughtOption{background:#fffdf8;border-color:#dbc4bb;color:#5a484b}
+.thoughtOption:hover{background:#f3e0dd}
+.thoughtOption.selected{background:linear-gradient(135deg,#b86e7d,#8e5665);border-color:#c9909b;color:#fff}
+.games{background:#dce8e455}
+.pauseBtn{background:#fffaf1;color:#536f75;border-color:#cdb9b1}
+.closeGame{background:#fffaf1;color:#a56774;border-color:#d2b9b1}
+.treasureArena,.balloonArena,.sequenceArea{border-color:#cdb6ae;background:radial-gradient(circle at 50% 40%,#d89baa33,transparent 58%),#e9ded9}
+.heartBucket{background:linear-gradient(145deg,#d99ba8,#b86e7d 55%,#8e5665);border-color:#fff5ed;box-shadow:0 0 12px #b86e7d55,0 0 25px #b86e7d22,inset 0 3px 8px #ffffff55}
+.boyFace{border-color:#f3ddd4;box-shadow:0 0 8px #d99ba8,0 0 20px #b86e7d33}
+.memoryCard{background:linear-gradient(145deg,#b86e7d,#8e5665);box-shadow:0 6px 15px #5d454533}
+.memoryCard.matched{background:linear-gradient(145deg,#e0b1ba,#b86e7d)}
+.memoryCard.flipped{background:#fffaf1;color:#5a4b4d}
+.sequenceObject,.sequenceButtons .seqBtn{background:#fffaf1;border-color:#d6beb5;color:#5a4b4d}
+.sequenceButtons .seqBtn:hover{background:#f0dedb}
+.seqBtn.correctFlash{background:#e2bbc3;border-color:#b86e7d}
+.selectedItem{background:#efd2d6;border-color:#c99aa4}
+.end h2{color:#536f75}
+
+@media(max-width:800px){
+ .scrapbookWelcome{min-height:700px;padding:30px 22px 30px}
+ .scrapbookWelcome:before{position:relative;display:block;left:auto;top:auto;bottom:auto;width:78%;height:190px;margin:0 auto 25px;transform:rotate(-2deg)}
+ .scrapbookWelcome:after{left:50%;bottom:auto;top:205px;transform:translateX(-50%) rotate(-7deg)}
+ .scrapbookWelcome > *{margin-left:0;max-width:100%}
+}
+
+
+/* Cute first landing page */
+.birthdayLanding{
+ min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px;
+ background:
+   radial-gradient(circle at 15% 18%,#f5d9d755,transparent 22%),
+   radial-gradient(circle at 85% 78%,#d9e5df66,transparent 24%),
+   #eee3dc;
+ color:#514245;
+}
+.landingBoard{
+ width:min(980px,96vw);min-height:600px;position:relative;overflow:hidden;
+ display:grid;grid-template-columns:43% 57%;align-items:center;
+ background:#fffaf2;border:1px solid #d7c0b5;
+ border-radius:8px 24px 10px 22px;
+ box-shadow:0 22px 60px #604b5030,0 3px 0 #fff inset;
+ transform:rotate(-.3deg);
+}
+.landingPhoto{
+ position:relative;height:470px;margin:38px 20px 38px 38px;
+ background:#fffdf8;padding:12px 12px 46px;
+ border:1px solid #d8c7bd;box-shadow:0 15px 35px #5f4b5028;
+ transform:rotate(-3deg);
+}
+.landingPhoto img{width:100%;height:100%;object-fit:cover;display:block;border-radius:2px}
+.landingPhoto:after{
+ content:'my favourite person ♡';position:absolute;left:0;right:0;bottom:13px;
+ text-align:center;font:italic 17px Georgia;color:#7d666b;
+}
+.landingPhotoTape{
+ position:absolute;top:-13px;left:50%;width:95px;height:25px;
+ transform:translateX(-50%) rotate(-3deg);background:#e5c29c99;z-index:3;
+}
+.landingCopy{padding:55px 62px 55px 42px;position:relative;text-align:center}
+.landingTiny{color:#a26773;letter-spacing:4px;font-size:11px;margin-bottom:12px;font-weight:bold}
+.landingTitle{font:italic 58px/1.05 Georgia,serif;color:#4e4145;margin-bottom:14px}
+.landingTitle span{display:block;color:#b56f7c;font-size:.9em}
+.landingSub{color:#786267;line-height:1.7;font-size:16px;margin:0 auto 28px;max-width:430px}
+.landingHearts{font-size:26px;letter-spacing:7px;color:#c57b88;margin-bottom:25px}
+.openLockBtn{
+ display:inline-block;border:0;border-radius:999px;padding:14px 30px;cursor:pointer;
+ background:#536f75;color:#fffaf2;font-weight:bold;font-size:15px;
+ box-shadow:0 10px 24px #536f7530;transition:.25s;
+}
+.openLockBtn:hover{transform:translateY(-2px) scale(1.02)}
+.landingNote{margin-top:17px;font-size:11px;color:#a18487;letter-spacing:1px}
+.sticker{position:absolute;font-size:28px;z-index:3}
+.sticker.one{right:25px;top:20px;transform:rotate(12deg)}
+.sticker.two{left:25px;bottom:22px;transform:rotate(-12deg)}
+.lockPage{display:none;background:#eee3dc}
+.lockPage.show{display:flex}
+.lockBoard{width:min(920px,96vw)}
+@media(max-width:800px){
+ .landingBoard{grid-template-columns:1fr;min-height:auto}
+ .landingPhoto{height:300px;margin:34px 35px 15px}
+ .landingCopy{padding:30px 25px 40px}
+ .landingTitle{font-size:43px}
+ .sticker.one{right:10px;top:10px}
+ .sticker.two{left:10px;bottom:10px}
+}
+
+
+/* =========================================================
+   FINAL CUTE WALLPAPER + READABLE TEXT THEME
+   Inspired by the supplied plaid / grid-flower / soft-heart
+   wallpapers. Each major section intentionally has a different
+   background and a different card/frame treatment.
+   ========================================================= */
+
+/* Global paper base — soft plaid, like the reference wallpaper */
+body{
+  color:#493d42;
+  background-color:#fffaf6;
+  background-image:
+    linear-gradient(rgba(229,166,181,.18) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(229,166,181,.18) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.75) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.75) 1px,transparent 1px),
+    #fffaf6;
+  background-size:32px 32px,32px 32px,8px 8px,8px 8px;
+}
+
+/* Keep all normal text dark enough on the new light wallpapers */
+p{color:#5d4b51}
+.small{color:#9b6372}
+
+/* Floating hearts become softer on light backgrounds */
+.hearts{opacity:.65}
+.heart{color:#e59aad;opacity:.42}
+
+/* ---------------- FIRST LANDING: scrapbook photo card ---------------- */
+.birthdayLanding{
+  background:
+    radial-gradient(circle at 12% 18%,rgba(245,190,205,.55),transparent 18%),
+    radial-gradient(circle at 88% 78%,rgba(181,211,196,.45),transparent 20%),
+    #fff8f4;
+  color:#493d42;
+}
+.landingBoard{
+  background:#fffdf8;
+  border:1px solid #dfc1b8;
+  box-shadow:0 24px 65px rgba(96,68,74,.18),0 2px 0 #fff inset;
+}
+.landingPhoto{
+  background:#fff;
+  border-color:#e5d3cb;
+  box-shadow:0 18px 38px rgba(82,62,67,.17);
+}
+.landingTiny{color:#a35f70}
+.landingTitle{color:#4f4449}
+.landingTitle span{color:#bb7183}
+.landingSub{color:#6b5a60}
+.landingHearts{color:#c47b8a}
+.openLockBtn{background:#b86e7d;color:#fffdf8;box-shadow:0 12px 28px rgba(184,110,125,.24)}
+.landingNote{color:#9a7a80}
+
+/* ---------------- LOCK PAGE: different photo + different frame ---------------- */
+.lockPage{
+  background:
+    radial-gradient(circle at 8% 20%,rgba(242,184,201,.42),transparent 16%),
+    radial-gradient(circle at 92% 82%,rgba(186,214,202,.38),transparent 18%),
+    #f8eee9;
+}
+.scrapbookWelcome.lockBoard{
+  width:min(960px,96vw);
+  min-height:560px;
+  padding:48px 55px;
+  background:#fffdf8;
+  border:1px solid #dfc0b7;
+  border-radius:22px 7px 20px 9px;
+  box-shadow:0 24px 65px rgba(82,61,66,.20),0 2px 0 #fff inset;
+  transform:rotate(.25deg);
+}
+.scrapbookWelcome:before{
+  /* Separate image from the landing page: lock page uses boy.jpeg.
+     Replace only this filename if you want a different lock photo. */
+  background:
+    linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08)),
+    url('boy.jpeg') center/cover no-repeat;
+  border:10px solid #fff;
+  box-shadow:0 14px 34px rgba(83,61,66,.18);
+}
+.scrapbookWelcome:after{color:#d47d91}
+.scrapbookWelcome .small{
+  color:#9d5e70;
+  font-weight:bold;
+  text-shadow:none;
+}
+.scrapbookWelcome h1{
+  color:#51444a !important;
+  text-shadow:none !important;
+  font-size:clamp(34px,4vw,46px);
+  line-height:1.1;
+}
+.scrapbookWelcome p{
+  color:#625258 !important;
+  font-size:15px;
+  line-height:1.7;
+}
+.scrapbookWelcome p b{color:#9c596c}
+.scrapbookWelcome .code input{
+  color:#493d42 !important;
+  background:#fffaf7 !important;
+  border:1px solid #d7aeb0 !important;
+  box-shadow:0 4px 12px rgba(106,72,80,.08) inset;
+}
+.scrapbookWelcome .hint{color:#98777d !important}
+.scrapbookWelcome form button{
+  background:linear-gradient(135deg,#c17a89,#9e5c6f) !important;
+  color:#fff !important;
+}
+.scrapbookWelcome .error{color:#b54f63 !important;font-weight:bold}
+
+/* ---------------- MAIN SURPRISE QUESTION: floral-grid wallpaper ---------------- */
+.page:not(.lockPage){
+  background-color:#fffdfb;
+  background-image:
+    linear-gradient(rgba(236,177,193,.24) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(236,177,193,.24) 1px,transparent 1px);
+  background-size:42px 42px;
+}
+.card{
+  width:min(700px,94vw);
+  padding:42px 42px 38px;
+  background:rgba(255,252,248,.96);
+  border:1px solid #e0c3bb;
+  border-radius:30px 18px 34px 15px;
+  box-shadow:0 22px 55px rgba(91,68,74,.17);
+  color:#4f4348;
+  position:relative;
+}
+.card:before,.card:after{
+  position:absolute;
+  font-size:28px;
+  opacity:.7;
+}
+.card:before{content:'🌸';left:20px;top:16px;transform:rotate(-12deg)}
+.card:after{content:'🌿';right:22px;bottom:18px;transform:rotate(16deg)}
+.questionTitle{
+  background:linear-gradient(90deg,#536b73,#b5687b,#c49461,#b5687b,#536b73);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  color:#536b73;
+  text-shadow:none;
+}
+.questionBox{
+  background:#fff8f5 !important;
+  border:1px solid #ead3cb !important;
+  border-radius:18px 26px 18px 26px;
+  box-shadow:0 8px 20px rgba(109,76,83,.07) inset;
+}
+.questionBox .small{color:#a46674 !important;font-weight:bold}
+.questionBox p{color:#594b50 !important;font-weight:600}
+.yes{background:linear-gradient(135deg,#b96e80,#98586a);color:#fff;box-shadow:0 10px 24px rgba(152,88,106,.22)}
+.no{color:#5a4a4f;background:#fff;border:1px solid #d6b6b0}
+
+/* ---------------- BIRTHDAY PAGE: soft-heart wallpaper + POLAROID ---------------- */
+.birthdayPage{
+  background-color:#fff7ef;
+  background-image:
+    radial-gradient(circle at 10% 12%,rgba(207,166,127,.28) 0 12px,transparent 13px),
+    radial-gradient(circle at 85% 18%,rgba(207,166,127,.22) 0 12px,transparent 13px),
+    radial-gradient(circle at 20% 72%,rgba(207,166,127,.20) 0 11px,transparent 12px),
+    radial-gradient(circle at 78% 82%,rgba(207,166,127,.24) 0 12px,transparent 13px),
+    #fff7ef;
+}
+.birthdayTitle h1{
+  background:linear-gradient(90deg,#526e76,#b56e7e,#c2935f,#b56e7e,#526e76);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.birthdayTitle .small{color:#a26470}
+.birthdayTitle p{color:#66565b}
+.photoFrame{
+  background:#fff;
+  border:0;
+  padding:13px 13px 52px;
+  border-radius:2px;
+  box-shadow:0 18px 38px rgba(74,57,62,.20);
+  transform:rotate(-3.5deg);
+}
+.photoFrame:before{
+  content:'';position:absolute;left:22px;top:-12px;width:90px;height:23px;
+  background:rgba(226,194,156,.58);transform:rotate(-4deg);z-index:4;
+}
+.photoFrame:after{
+  color:#6d6264;
+  font-size:15px;
+  bottom:14px;
+}
+.photoHeart{background:#bd7180}
+.letter{
+  background:#fffdf8;
+  border:0;
+  border-left:5px solid #d9a6a9;
+  border-radius:4px 20px 4px 18px;
+  box-shadow:0 18px 38px rgba(75,57,61,.13);
+  transform:rotate(1.2deg);
+}
+.letter:before{
+  content:'♡';position:absolute;right:25px;bottom:18px;font-size:30px;color:#d59aa3;opacity:.65;
+}
+.letter h2{color:#5c6e73}
+.letter p{color:#55474c}
+
+/* ---------------- REASONS: notebook / index-card look ---------------- */
+.reasons{
+  background-color:#fffdfb;
+  background-image:
+    linear-gradient(rgba(193,214,203,.25) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(193,214,203,.25) 1px,transparent 1px);
+  background-size:34px 34px;
+}
+.reasonTitle h2{color:#587078}
+.reasonGrid{gap:26px}
+.reasonCard{
+  min-height:190px;
+  background:#fffdf9;
+  border:1px solid #dfcbc2;
+  border-radius:5px 18px 7px 17px;
+  box-shadow:0 12px 24px rgba(83,65,69,.11);
+  color:#51454a;
+  position:relative;
+}
+.reasonCard:nth-child(odd){transform:rotate(-1.4deg)}
+.reasonCard:nth-child(even){transform:rotate(1.4deg)}
+.reasonCard:hover{transform:translateY(-7px) rotate(0);background:#fffaf4}
+.reasonIcon{font-size:42px}
+.reasonCard h3{color:#5b4a50}
+.reasonCard span{color:#a56472}
+
+/* ---------------- THOUGHTS: soft blush paper, dark readable typography ---------------- */
+.thoughts{
+  background:#faeee9;
+  background-image:
+    linear-gradient(rgba(236,182,193,.16) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(236,182,193,.16) 1px,transparent 1px);
+  background-size:38px 38px;
+}
+.thoughtsTitle h2{color:#586f75}
+.thoughtRevealBox{
+  max-width:720px;
+  padding:42px 34px;
+  background:#fffaf5 !important;
+  border:1px solid #dfc1b9 !important;
+  border-radius:8px 28px 10px 25px;
+  box-shadow:0 18px 38px rgba(77,58,63,.14);
+  position:relative;
+}
+.thoughtRevealBox:before{
+  content:'♡';position:absolute;left:22px;top:16px;font-size:30px;color:#dba0aa;
+}
+.thoughtRevealBox:after{
+  content:'✿';position:absolute;right:24px;bottom:18px;font-size:28px;color:#a8c9b2;transform:rotate(-10deg);
+}
+.thoughtRevealIcon{font-size:40px}
+.thoughtRevealBox .small{color:#a05f70 !important;font-weight:bold}
+.thoughtRevealBox h2{
+  color:#9c6474 !important;
+  -webkit-text-fill-color:#9c6474 !important;
+  font:italic 36px Georgia !important;
+  text-shadow:none !important;
+  line-height:1.2;
+}
+.thoughtRevealBox p{
+  color:#5d4e53 !important;
+  font-weight:600;
+}
+.thoughtRevealHint{color:#a05f70 !important;font-weight:bold}
+.thoughtCard{
+  background:#fffdf8;
+  border:1px solid #dec7bf;
+  border-radius:8px 17px 8px 17px;
+  box-shadow:0 9px 22px rgba(80,62,67,.09);
+}
+.thoughtCard h3{color:#55484d !important}
+.thoughtOption{color:#55484d;background:#fff;border-color:#dfcbc4}
+.thoughtOption.selected{background:linear-gradient(135deg,#b97080,#99586a);color:#fff}
+
+/* ---------------- GAMES: warm beige heart-paper + ticket cards ---------------- */
+.games{
+  background-color:#fdf4ea;
+  background-image:
+    radial-gradient(circle at 15% 20%,rgba(210,174,137,.20) 0 9px,transparent 10px),
+    radial-gradient(circle at 82% 35%,rgba(210,174,137,.18) 0 10px,transparent 11px),
+    radial-gradient(circle at 30% 78%,rgba(210,174,137,.18) 0 9px,transparent 10px),
+    radial-gradient(circle at 88% 84%,rgba(210,174,137,.20) 0 10px,transparent 11px);
+}
+.gameTitle h2{color:#65757a}
+.gameGrid{gap:26px}
+.gameCard{
+  background:#fffdf9;
+  border:1px solid #dec8bd;
+  border-radius:18px;
+  box-shadow:0 12px 28px rgba(79,61,66,.11);
+  color:#51454a;
+  position:relative;
+}
+.gameCard:nth-child(1){border-top:5px solid #c17b8a}
+.gameCard:nth-child(2){border-top:5px solid #a7c7b0}
+.gameCard:nth-child(3){border-top:5px solid #c49b68}
+.gameCard:nth-child(4){border-top:5px solid #7e9ca3}
+.gameCard h3{color:#56474d}
+.gameCard p{color:#66575c}
+
+/* ---------------- POPUPS / MINI GAME ARENAS ---------------- */
+.reasonPopup,.gamePopup{background:rgba(64,50,54,.48);backdrop-filter:blur(7px)}
+.popupBox{
+  background:#fffaf4;
+  border:1px solid #ddc0b7;
+  box-shadow:0 24px 55px rgba(57,43,47,.22);
+}
+.popupBox h2{color:#5b6f74}
+.popupBox p{color:#594b50}
+.close{background:#5d7479;border-color:#5d7479;color:#fff}
+.treasureArena,.balloonArena,.sequenceArea{
+  background:#fff8f2;
+  border-color:#d9c0b7;
+}
+.sequenceObject,.sequenceButtons .seqBtn,.memoryCard.flipped{color:#56494e}
+
+/* Make every section use a different decorative frame treatment */
+@media(max-width:800px){
+  .card{padding:36px 22px 32px}
+  .questionTitle{font-size:28px}
+  .scrapbookWelcome.lockBoard{padding:30px 22px;min-height:700px}
+  .scrapbookWelcome h1{font-size:34px}
+  .scrapbookWelcome p{font-size:14px}
+  .reasonCard:nth-child(odd),.reasonCard:nth-child(even){transform:none}
+  .thoughtRevealBox h2{font-size:29px !important}
+}
+
+
+
+/* =========================================================
+   FINAL COLOR BOOST
+   The previous version was too white. Keep the same layout and
+   functionality, but give every section a clearly different
+   pastel scrapbook color so the page feels cute, warm and alive.
+   ========================================================= */
+body{
+  background-color:#eadfe7;
+  background-image:
+    radial-gradient(circle at 8% 12%,rgba(244,177,196,.58),transparent 23%),
+    radial-gradient(circle at 92% 30%,rgba(186,205,229,.48),transparent 22%),
+    radial-gradient(circle at 18% 86%,rgba(188,215,194,.45),transparent 24%),
+    linear-gradient(rgba(255,255,255,.20) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.20) 1px,transparent 1px),
+    #eadfe7;
+  background-size:auto,auto,auto,36px 36px,36px 36px,auto;
+}
+
+/* Landing = dusty rose + peach */
+.birthdayLanding{
+  background:
+    radial-gradient(circle at 12% 18%,rgba(240,158,181,.72),transparent 22%),
+    radial-gradient(circle at 88% 78%,rgba(167,196,181,.62),transparent 25%),
+    linear-gradient(135deg,#ead0d7,#f2d9c8 52%,#dce6df);
+}
+.landingBoard{
+  background:linear-gradient(135deg,#fff1e9,#f8e1e2);
+  border-color:#cf9da5;
+  box-shadow:0 25px 65px rgba(86,57,68,.28),0 2px 0 #fff9 inset;
+}
+.landingPhoto{background:#fff4ec;border-color:#d8b5b0}
+.landingCopy{background:linear-gradient(90deg,transparent,#fff4ef55)}
+.landingTitle{color:#594650}
+.landingTitle span{color:#b45f78}
+.landingSub{color:#624f58}
+.landingTiny{color:#9c526b}
+.openLockBtn{background:linear-gradient(135deg,#c26f86,#9a566f)}
+
+/* Lock = muted blue/rose paper */
+.lockPage{
+  background:
+    radial-gradient(circle at 8% 18%,rgba(239,166,190,.65),transparent 19%),
+    radial-gradient(circle at 90% 78%,rgba(161,190,202,.55),transparent 23%),
+    linear-gradient(135deg,#d9dfe9,#ecd5dc 55%,#dce8e1);
+}
+.scrapbookWelcome.lockBoard{
+  background:linear-gradient(135deg,#f8e8e5,#eee4ef);
+  border-color:#c89fa9;
+  box-shadow:0 26px 65px rgba(70,56,69,.27),0 2px 0 #fff9 inset;
+}
+.scrapbookWelcome h1{color:#4f3f4a !important}
+.scrapbookWelcome p{color:#5b4a54 !important}
+
+/* Main surprise = pink grid, but not white */
+.page:not(.lockPage){
+  background-color:#efd8e0;
+  background-image:
+    linear-gradient(rgba(179,112,133,.20) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(179,112,133,.20) 1px,transparent 1px),
+    radial-gradient(circle at 12% 15%,rgba(255,220,229,.72),transparent 22%),
+    radial-gradient(circle at 88% 85%,rgba(207,224,215,.55),transparent 23%);
+  background-size:42px 42px,42px 42px,auto,auto;
+}
+.card{
+  background:linear-gradient(145deg,#fff0ea,#f8dfe5) !important;
+  border-color:#cf9eaa;
+  box-shadow:0 24px 55px rgba(91,55,67,.25);
+}
+.questionBox{background:#f8e8e8 !important;border-color:#d9a9b3 !important}
+.questionBox p{color:#594650 !important}
+
+/* Birthday = warm peach paper */
+.birthdayPage{
+  background-color:#efd8c8;
+  background-image:
+    radial-gradient(circle at 10% 12%,rgba(198,151,112,.35) 0 14px,transparent 15px),
+    radial-gradient(circle at 85% 18%,rgba(184,125,148,.27) 0 13px,transparent 14px),
+    radial-gradient(circle at 22% 75%,rgba(146,178,158,.30) 0 12px,transparent 13px),
+    radial-gradient(circle at 80% 84%,rgba(194,143,105,.28) 0 14px,transparent 15px),
+    linear-gradient(135deg,#f1d7c7,#ead0d5);
+}
+.birthdayTitle .small{color:#95586a}
+.birthdayTitle p{color:#604f54}
+.photoFrame{background:#fff0df;border-color:#d3ae98}
+.letter{
+  background:linear-gradient(135deg,#fff1df,#f7dfe2) !important;
+  border-left:6px solid #bf7b89;
+}
+.letter p{color:#55444a}
+
+/* Reasons = sage green notebook */
+.reasons{
+  background-color:#dce9e2;
+  background-image:
+    linear-gradient(rgba(103,143,126,.19) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(103,143,126,.19) 1px,transparent 1px),
+    radial-gradient(circle at 90% 15%,rgba(247,197,208,.52),transparent 20%);
+  background-size:34px 34px,34px 34px,auto;
+}
+.reasonTitle h2{color:#4f7068}
+.reasonCard{
+  background:linear-gradient(145deg,#fff4e8,#f8e7dc) !important;
+  border-color:#caaea2;
+  box-shadow:0 14px 28px rgba(67,83,76,.17);
+}
+.reasonCard:nth-child(2),.reasonCard:nth-child(5){background:linear-gradient(145deg,#f8e1e8,#f1d8df) !important}
+.reasonCard:nth-child(3),.reasonCard:nth-child(6){background:linear-gradient(145deg,#e9e3f1,#ddd8eb) !important}
+.reasonCard h3{color:#51434a}
+
+/* Thoughts = lavender/blush paper */
+.thoughts{
+  background-color:#e5dcef;
+  background-image:
+    linear-gradient(rgba(132,113,155,.17) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(132,113,155,.17) 1px,transparent 1px),
+    radial-gradient(circle at 12% 75%,rgba(244,181,199,.45),transparent 22%);
+  background-size:38px 38px,38px 38px,auto;
+}
+.thoughtsTitle h2{color:#685678}
+.thoughtRevealBox{
+  background:linear-gradient(145deg,#fae8ee,#e9e0f2) !important;
+  border-color:#c7afc5 !important;
+  box-shadow:0 20px 40px rgba(80,61,91,.20);
+}
+.thoughtRevealBox h2{color:#76566d !important;-webkit-text-fill-color:#76566d !important}
+.thoughtRevealBox p{color:#574b59 !important}
+.thoughtCard{background:#f8edf0 !important;border-color:#cdb6c7}
+.thoughtOption{background:#fff4f5;border-color:#d7c0cf}
+
+/* Games = butter-yellow / terracotta paper */
+.games{
+  background-color:#ead8bd;
+  background-image:
+    radial-gradient(circle at 12% 18%,rgba(184,121,135,.30) 0 10px,transparent 11px),
+    radial-gradient(circle at 82% 32%,rgba(111,151,133,.30) 0 11px,transparent 12px),
+    radial-gradient(circle at 30% 78%,rgba(194,150,91,.28) 0 10px,transparent 11px),
+    linear-gradient(rgba(255,250,235,.20) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,250,235,.20) 1px,transparent 1px);
+  background-size:auto,auto,auto,40px 40px,40px 40px;
+}
+.gameTitle h2{color:#66534d}
+.gameCard{
+  background:linear-gradient(145deg,#fff1dc,#f4ded1) !important;
+  border-color:#c9a996;
+  box-shadow:0 14px 30px rgba(89,66,55,.18);
+}
+.gameCard:nth-child(2){background:linear-gradient(145deg,#e4eee4,#d5e6dc) !important}
+.gameCard:nth-child(3){background:linear-gradient(145deg,#f4e5ca,#edd5ae) !important}
+.gameCard:nth-child(4){background:linear-gradient(145deg,#e3e2ef,#d5d9e8) !important}
+.gameCard h3{color:#51434a}
+.gameCard p{color:#5d4e52}
+.treasureArena,.balloonArena,.sequenceArea{background:linear-gradient(145deg,#e3c5c1,#d9d6df) !important}
+
+/* Popups keep contrast instead of turning white */
+.popupBox{background:linear-gradient(145deg,#f8e2e1,#e7dced) !important;border-color:#c9a8b2}
+
+/* stronger mobile section colors too */
+@media(max-width:800px){
+  .birthdayPage{background:linear-gradient(135deg,#efd8c8,#ead2db)}
+  .reasons{background-color:#dce9e2}
+  .thoughts{background-color:#e5dcef}
+  .games{background-color:#ead8bd}
+}
+
+
+/* FINAL POLISH: cohesive blush scrapbook wallpaper + one-question-at-a-time thoughts */
+:root{--blush-ink:#563b47;--rose-deep:#a84f6d;--rose-mid:#cc7f96;--rose-line:#dba8b7;--paper-pink:#f7e5e7;--soft-cream:#fff0e8;--sage:#dce8dc;}
+body{background-color:#ead3dc}
+/* Keep one related grid-paper family across sections, with coordinated color tints. */
+section{position:relative;isolation:isolate}
+.reasonSection,.reasons,.reason-section{background-color:#f2dfe4}
+.thoughts{background-color:#f3dfe5 !important;background-image:linear-gradient(rgba(198,126,151,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(198,126,151,.15) 1px,transparent 1px) !important;background-size:44px 44px !important}
+.games{background-color:#eee0e4 !important;background-image:linear-gradient(rgba(190,137,151,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(190,137,151,.12) 1px,transparent 1px) !important;background-size:44px 44px !important}
+.birthdayPage{background-color:#f4e1df !important;background-image:linear-gradient(rgba(202,144,151,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(202,144,151,.11) 1px,transparent 1px) !important;background-size:44px 44px !important}
+.reasonCard,.gameCard,.thoughtRevealBox,.thoughtCard,.letter,.popupBox{color:var(--blush-ink)}
+.thoughts .thoughtRevealBox{background:linear-gradient(135deg,#ffe8ec,#eadff0) !important;border:1px solid #d6a0b1 !important;box-shadow:0 16px 35px #9d62752b}
+.thoughtRevealBox h2{color:#8f4e68 !important;-webkit-text-fill-color:#8f4e68 !important}
+.thoughtRevealBox p,.thoughtRevealBox .small,.thoughtRevealHint{color:#634452 !important}
+#thoughtsQuiz{max-width:760px;margin:24px auto 0;width:calc(100% - 32px)}
+.currentThoughtCard{display:block;margin:0 auto;padding:clamp(20px,4vw,34px);border-radius:22px 8px 22px 8px;background:linear-gradient(145deg,#fff0e8,#f5dfe6 62%,#e9e1f0) !important;border:1px solid #d8a6b5 !important;box-shadow:0 16px 34px rgba(111,66,82,.16);animation:thoughtCardEnter .55s cubic-bezier(.2,.75,.2,1) both;cursor:default}
+.currentThoughtCard h3{font-size:clamp(20px,3vw,27px);line-height:1.45;color:#563b47 !important;margin:14px 0 12px}
+.thoughtProgress{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#8c4d66;font-size:11px;font-weight:800;letter-spacing:1.2px;border-bottom:1px dashed #c995a7;padding-bottom:12px}
+.currentThoughtCard .thoughtOpenHint{font-size:12px;font-weight:800;letter-spacing:.7px;color:#9d526d !important;margin:12px 0}
+.currentThoughtCard .thoughtContent{margin-top:14px}
+.thoughtOptionsList{display:grid;gap:10px}
+.currentThoughtCard .thoughtOption{width:100%;display:block;text-align:left;margin:0;padding:13px 15px;border-radius:13px;background:#fff8f4 !important;color:#563b47 !important;border:1px solid #d9b7bd !important;line-height:1.45;white-space:normal;box-shadow:0 4px 10px #8754650d;transition:transform .18s,background .18s,border-color .18s}
+.currentThoughtCard .thoughtOption:hover{transform:translateX(3px);background:#fcecf0 !important}
+.currentThoughtCard .thoughtOption.selected{background:linear-gradient(120deg,#bd6d87,#95516d) !important;color:#fff !important;border-color:#98536d !important;box-shadow:0 6px 15px #95516d30}
+.thoughtNav{display:flex;justify-content:space-between;gap:12px;margin-top:22px;padding-top:15px;border-top:1px dashed #c995a7}
+.thoughtNavBtn{border:1px solid #b66c83;border-radius:30px;padding:12px 20px;font-size:14px;font-weight:800;cursor:pointer;transition:transform .2s,box-shadow .2s;min-width:120px}
+.thoughtPrev{background:#fff8f4;color:#85465f}
+.thoughtNext{background:linear-gradient(135deg,#bd6d87,#95516d);color:#fff;box-shadow:0 7px 16px #95516d2c}
+.thoughtNavBtn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.thoughtFinish{text-align:center;padding:34px 20px;border-radius:22px;background:linear-gradient(145deg,#fff0e8,#f5dfe6,#e9e1f0);border:1px solid #d8a6b5;box-shadow:0 16px 34px #6f42521c;color:#563b47;animation:thoughtCardEnter .5s ease both}
+.thoughtFinish h3{font-size:24px;color:#85465f;margin:12px 0}
+.thoughtFinish p{color:#563b47 !important}
+.finishEmoji{font-size:44px}
+@keyframes thoughtCardEnter{from{opacity:0;transform:translateX(34px) translateY(8px) scale(.985)}to{opacity:1;transform:translateX(0) translateY(0) scale(1)}}
+/* Entrance motion from both sides, kept subtle so content remains easy to read. */
+.welcome,.card,.landingPhoto,.landingCopy,.reasonCard,.gameCard,.letter,.photoFrame{animation:softSideEntrance .65s ease both}
+@keyframes softSideEntrance{from{opacity:0;transform:translateX(18px) translateY(8px)}to{opacity:1;transform:translateX(0) translateY(0)}}
+.heart{animation-name:floatHeartSide !important}
+@keyframes floatHeartSide{0%{transform:translate3d(0,25px,0) rotate(-8deg);opacity:0}12%{opacity:.72}55%{transform:translate3d(13px,-48vh,0) rotate(9deg)}100%{transform:translate3d(-10px,-105vh,0) rotate(-8deg);opacity:0}}
+@media(max-width:600px){#thoughtsQuiz{width:calc(100% - 24px)}.currentThoughtCard{padding:19px 15px}.thoughtNavBtn{min-width:0;flex:1;padding:12px 10px}.thoughtProgress{font-size:10px}.currentThoughtCard .thoughtOption{padding:12px}}
+
+
+/* Music pill: subtle, readable and consistent with the scrapbook theme. */
+.loveMusicBar{position:fixed;right:18px;bottom:18px;z-index:9999;display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #c990a2;border-radius:999px;background:linear-gradient(135deg,#fff0e8,#f2dce5);color:#563b47;box-shadow:0 8px 24px #6f42522b;font-size:12px;font-weight:800;max-width:calc(100vw - 28px)}
+.musicNote{font-size:20px;color:#a65370;animation:musicPulse 1.2s ease-in-out infinite}
+.musicLabel{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:230px}
+#stopLoveMusic{padding:8px 13px;min-width:66px;border:1px solid #a85f78;border-radius:30px;background:#a85f78;color:#fff;font-size:12px;font-weight:800;cursor:pointer}
+.loveMusicPlayer{position:fixed;width:200px;height:113px;right:-220px;bottom:0;overflow:hidden;opacity:.01;pointer-events:none;z-index:-1}
+.finalShayari{margin:55px auto 35px;width:min(850px,92%);padding:38px 28px;text-align:center;position:relative;overflow:hidden;border:1px solid #d99aab;border-radius:28px 12px 28px 12px;background:linear-gradient(135deg,#f7dce4,#f9e8d8 52%,#e6ddec);box-shadow:0 16px 35px #7b4d5b22;color:#593b48}
+.finalShayari .shayariDecor{font-size:28px;letter-spacing:8px;margin-bottom:14px}
+.finalShayari h2{color:#9f526e;margin:0 0 18px;font-family:Georgia,serif;font-size:clamp(25px,4vw,36px)}
+.finalShayari p{color:#593b48!important;font-size:clamp(17px,2.4vw,21px);line-height:1.95;font-weight:600;margin:0}
+.finalShayari .shayariEnd{margin-top:18px;font-size:25px}
+@media(max-width:520px){.finalShayari{padding:30px 17px;margin:35px auto 25px}}
+@keyframes musicPulse{50%{transform:scale(1.18);opacity:.7}}
+@media(max-width:520px){.loveMusicBar{right:10px;bottom:10px;gap:7px;padding:9px 10px}.musicLabel{max-width:155px;font-size:11px}}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<!-- Tum Se Hi background music: starts when YES is clicked; replace/disable here if desired. -->
+<div id="loveMusicBar" class="loveMusicBar" aria-live="polite" style="display:none">
+  <span class="musicNote">♫</span>
+  <span class="musicLabel">Tum Se Hi·playing for you ❤️</span>
+  <button type="button" id="stopLoveMusic" onclick="toggleLoveMusic()">Stop ♡</button>
+</div>
+<div id="loveMusicPlayer" class="loveMusicPlayer" aria-hidden="true"></div>
+
+
+
+<!-- FIRST PAGE: HAPPY BIRTHDAY -->
+<section class="birthdayLanding" id="landingPage">
+  <div class="landingBoard">
+    <div class="sticker one">✦ ♡</div>
+    <div class="sticker two">♡ ✦</div>
+
+    <div class="landingPhoto">
+      <div class="landingPhotoTape"></div>
+      <img src="img1.jpeg" alt="My Love">
+    </div>
+
+    <div class="landingCopy">
+      <div class="landingTiny">A LITTLE BIRTHDAY SURPRISE FOR YOU</div>
+      <div class="landingHearts">♡ ♥ ✦ ♥ ♡</div>
+      <h1 class="landingTitle">Happy Birthday,<span>My Love! 🎂</span></h1>
+      <p class="landingSub">
+        Today is all about you. ❤️<br>
+        I made this little corner of the internet just for my favourite person. 🥹💕
+      </p>
+      <button class="openLockBtn" type="button" onclick="openSecretPage()">Open Your Surprise ♡</button>
+      <div class="landingNote">there's a little secret waiting for you inside 🔐</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECOND PAGE: SECRET LOCK -->
+<section class="page lockPage" id="lockPage">
+<div class="welcome scrapbookWelcome lockBoard">
+<div class="lock">🔐</div>
+<div class="small">ONE LITTLE SECRET FIRST</div>
+<h1>Unlock My Surprise ❤️</h1>
+<p>
+I made something special just for you. 🥹💕
+<br><br>
+Enter the secret code to continue...<br>
+<b>Only you know the answer 🔐</b>
+</p>
+
+<form onsubmit="return validateSecret(event)">
+<div class="code">
+<input type="password" maxlength="1" class="codeInput" inputmode="numeric">
+<input type="password" maxlength="1" class="codeInput" inputmode="numeric">
+<input type="password" maxlength="1" class="codeInput" inputmode="numeric">
+<input type="password" maxlength="1" class="codeInput" inputmode="numeric">
+</div>
+<input type="hidden" name="passcode" id="passcode">
+<button type="submit" name="login">🔐 Unlock My Surprise ❤️</button>
+</form>
+
+<div class="error" id="codeError" role="alert" aria-live="polite"></div>
+
+<div class="hint">Hint: You already know the answer 😉</div>
+</div>
+</section>
+
+
+
+<!-- QUESTION -->
+<section class="page" id="question" style="display:none">
+<div class="card">
+
+<div class="couple">
+<div class="bear brown"><div class="face">
+<span class="eye left"></span><span class="eye right"></span>
+<span class="mouth"></span><span class="cheek left"></span><span class="cheek right"></span>
+</div></div>
+<div class="bear white"><div class="face">
+<span class="eye left"></span><span class="eye right"></span>
+<span class="mouth"></span><span class="cheek left"></span><span class="cheek right"></span>
+</div></div>
+<div class="coupleHeart">❤️</div>
+</div>
+
+<div class="small">YOU MADE IT IN ❤️</div>
+<h1 class="questionTitle">I Have A Surprise For You 💕</h1>
+
+<div class="questionBox">
+<p style="margin:0">
+<strong>Are you ready for something special? 🥺💕</strong>
+</p>
+</div>
+
+<div class="buttons">
+<button class="yes" onclick="sayYes()">YES ❤️</button>
+<button class="no" onclick="sayNo()">NO 😏</button>
+</div>
+
+</div>
+</section>
+
+<!-- NO -->
+<section class="page" id="noScreen">
+<div class="card noCard">
+<div style="font-size:48px">🤎 🐻 ❤️ 🤍 🐰</div>
+<div class="noEmoji">😤</div>
+<div class="small">EXCUSE ME?!</div>
+<h1>How Dare You Say No? 😤</h1>
+I made all of this for you and you really said NO?
+<br><br>
+Think again, mister. 😌❤️
+</p>
+<button class="yes" onclick="tryAgain()">Back❤️</button>
+</div>
+</section>
+
+<div id="surprise">
+
+<!-- BIRTHDAY -->
+<section class="birthdayPage">
+<div class="birthdayTitle">
+<div class="small">TODAY IS ALL ABOUT YOU ❤️</div>
+<h1>Happy Birthday,<span>My Favourite Person! 🎂</span></h1>
+</div>
+
+<div class="birthdayContent">
+
+<div>
+<div class="photoFrame">
+<!-- Change only this filename to replace the photo beside the birthday letter. -->
+<img src="letter-photo.jpeg" alt="Our Memory" onerror="this.onerror=null;this.src='img1.jpeg';">
+<div class="photoHeart">❤️</div>
+</div>
+<div class="photoCaption">One of my favourite memories with you 🥹❤️</div>
+</div>
+
+<div class="letter">
+<div class="letterTop">💌</div>
+<div class="letterDate">To My Favourite Person ❤️</div>
+<div class="letterLine"></div>
+<p>
+Happy Birthday, My Man. ❤️🎂
+
+I don’t know how to put into words how much you mean to me. You have become such a beautiful part of my life that I honestly can’t imagine my days without you. You are my favorite person, my safe place, and the one I want to share all my little and big moments with. 🥺❤️
+
+On your birthday, I just want you to know that I’ll always wish for your happiness, your success, and your beautiful smile. May life give you everything you deserve. ✨
+
+Thank you for being a part of my life and for giving me so many memories to cherish. I love you endlessly. ❤️🫶🏻
+</p>
+<div class="letterEnd">Forever Yours ❤️</div>
+</div>
+
+</div>
+</section>
+
+<!-- REASONS -->
+<section class="reasons">
+<div class="reasonTitle">
+<div class="small">JUST A FEW REASONS ❤️</div>
+<h2>Reasons Why I Love You</h2>
+<p>Tap each one... there's a little message waiting for you 💌</p>
+</div>
+
+<div class="reasonGrid">
+
+<div class="reasonCard" onclick="openReason(0)">
+<div class="reasonIcon">😊</div>
+<h3>Your Smile</h3><span>CLICK ME ❤️</span>
+</div>
+
+<div class="reasonCard" onclick="openReason(1)">
+<div class="reasonIcon">👀</div>
+<h3>Your Craziness🤪</h3><span>CLICK ME ❤️</span>
+</div>
+
+<div class="reasonCard" onclick="openReason(2)">
+<div class="reasonIcon">🤗</div>
+<h3>Your Hugs</h3><span>CLICK ME ❤️</span>
+</div>
+
+<div class="reasonCard" onclick="openReason(3)">
+<div class="reasonIcon">😂</div>
+<h3>The Way You Annoy Me 😤❤️</h3><span>CLICK ME ❤️</span>
+</div>
+
+<div class="reasonCard" onclick="openReason(4)">
+<div class="reasonIcon">💗</div>
+<h3>You, Just You. 🫀</h3><span>CLICK ME ❤️</span>
+</div>
+
+<div class="reasonCard" onclick="openReason(5)">
+<div class="reasonIcon">🫶</div>
+<h3>The Way You Love Me</h3><span>CLICK ME ❤️</span>
+</div>
+
+</div>
+</section>
+
+<!-- REASON POPUP -->
+<div class="reasonPopup" id="reasonPopup">
+<div class="popupBox">
+<div class="popupIcon" id="popupIcon">❤️</div>
+<h2 id="popupTitle">Your Smile</h2>
+<p id="popupText"></p>
+<button class="close" onclick="closeReason()">Close ❤️</button>
+</div>
+</div>
+
+<!-- LET'S KNOW EACH OTHER'S THOUGHTS -->
+<section class="thoughts">
+
+<div class="thoughtRevealWrap">
+  <div class="thoughtRevealBox" onclick="openThoughtsQuiz()">
+    <div class="thoughtRevealIcon">💭❤️</div>
+    <div class="small">A LITTLE MORE ABOUT YOU ❤️</div>
+    <h2>Let's Know Each Other's Thoughts 💭</h2>
+    <div class="thoughtRevealHint">TAP TO OPEN ❤️</div>
+  </div>
+</div>
+
+<div class="thoughtGrid" id="thoughtsQuiz" style="display:none"></div>
+
+</section>
+
+<!-- GAMES -->
+<section class="games">
+
+<div class="gameTitle">
+<div class="small">NOW LET'S PLAY ❤️</div>
+<h2>Love Games 🎮💕</h2>
+<p>Only one game can be played at a time. Choose wisely 😏❤️</p>
+</div>
+
+<div class="gameGrid">
+
+<!-- GAME 1 -->
+<div class="gameCard" id="gameCard1">
+<div class="gameIcon">💎</div>
+<h3>Love Treasure Collector</h3>
+<p>Catch ❤️ hearts and avoid 💔 broken hearts & 💣 bombs!</p>
+
+<div class="score">
+❤️ Hearts: <span id="treasureScore">0</span>
+&nbsp;&nbsp;
+💔 Lives: <span id="treasureLives">3</span>
+</div>
+
+<button class="yes playBtn" id="treasureStart" onclick="startTreasureGame()">
+Start Game 💕
+</button>
+
+<div id="treasureGame">
+
+<div class="gameControls">
+<button class="pauseBtn" id="treasurePause" onclick="pauseTreasure()">⏸ Pause</button>
+<button class="closeGame" onclick="closeTreasure()">✕ Close</button>
+</div>
+
+<div class="treasureInfo">❤️ CATCH | 💔 3 = OUT | 💣 = OUT</div>
+
+<div class="treasureArena" id="treasureArena">
+
+<div class="player" id="player">
+<div class="boyFace">
+<img src="boy.jpeg" alt="My Love">
+</div>
+
+<div class="heartBucket">
+<span>DIYA'S</span>
+<b>♥</b>
+<span>HEART</span>
+</div>
+
+</div>
+</div>
+
+<div style="font-size:10px;color:#ffabc5;margin-top:8px">
+👆 Drag left & right to move your heart bucket ❤️
+</div>
+
+</div>
+</div>
+
+<!-- GAME 2 -->
+<div class="gameCard" id="gameCard2">
+
+<div class="gameIcon">🎈</div>
+<h3>Heart Balloon Pop</h3>
+
+<p>
+Only touch ❤️ red hearts to increase your score!
+<br>
+💔 decreases score & 💣 means OUT.
+</p>
+
+<div class="score">
+❤️ Score: <span id="balloonScore">0</span>
+&nbsp;&nbsp;
+⏱️ Time: <span id="balloonTime">40</span>s
+</div>
+
+<div class="score">
+🔥 Combo: <span id="balloonCombo">0</span>
+</div>
+
+<button class="yes playBtn" id="balloonStart" onclick="startBalloonGame()">
+Play 🎈❤️
+</button>
+
+<div id="balloonGame">
+
+<div class="gameControls">
+<button class="pauseBtn" id="balloonPause" onclick="pauseBalloon()">⏸ Pause</button>
+<button class="closeGame" onclick="closeBalloon()">✕ Close</button>
+</div>
+
+<div class="treasureInfo">❤️ +1 | 💔 -1 | 💣 OUT</div>
+<div class="balloonArena" id="balloonArena"></div>
+
+</div>
+</div>
+
+<!-- GAME 3 -->
+<div class="gameCard" id="gameCard3">
+
+<div class="gameIcon">💏</div>
+<h3>Couple Memory Cards</h3>
+
+<p>
+Find all 8 matching romantic pairs!
+<br>
+Match = +20 ❤️
+</p>
+
+<div class="score">
+❤️ Score: <span id="memoryScore">0</span>
+&nbsp;&nbsp;
+Pairs: <span id="memoryPairs">0</span>/8
+</div>
+
+<div id="memoryStart">
+<button class="yes playBtn" onclick="chooseMemoryMode()">Play Memory 💏</button>
+</div>
+
+<div id="memoryMode" style="display:none">
+<p style="font-size:11px;margin:10px 0;color:#ffabc5">Choose your mode ❤️</p>
+
+<div class="buttons">
+<button class="yes playBtn" onclick="startMemory(1)">1 Player</button>
+<button class="yes playBtn" onclick="startMemory(2)">2 Players</button>
+</div>
+</div>
+
+<div id="memoryGameBox">
+
+<div class="gameControls">
+<button class="pauseBtn" id="memoryPause" onclick="pauseMemory()">⏸ Pause</button>
+<button class="closeGame" onclick="closeMemory()">✕ Close</button>
+</div>
+
+<div class="score">
+Turn: <span id="memoryTurn">Player 1</span>
+</div>
+
+<div class="memoryMessage" id="memoryMessage"></div>
+<div class="memoryBoard" id="memoryBoard"></div>
+
+</div>
+</div>
+
+<!-- GAME 4 -->
+<div class="gameCard" id="gameCard4">
+
+<div class="gameIcon">🧠</div>
+<h3>Love Sequence</h3>
+
+<p>
+Watch the romantic sequence carefully,
+then click the objects in exactly the same order! ❤️
+</p>
+
+<div class="score">
+🏆 Level: <span id="sequenceLevel">1</span>/5
+&nbsp;&nbsp;
+❤️ Lives: <span id="sequenceLives">3</span>
+</div>
+
+<button class="yes playBtn" id="sequenceStart" onclick="startSequenceGame()">
+Start Game 🧠❤️
+</button>
+
+<div id="sequenceGame">
+
+<div class="gameControls">
+<button class="pauseBtn" id="sequencePause" onclick="pauseSequence()">⏸ Pause</button>
+<button class="closeGame" onclick="closeSequence()">✕ Close</button>
+</div>
+
+<div class="sequenceArea">
+
+<div class="levelText">
+Level <span id="sequenceLevel2">1</span>/5
+</div>
+
+<div class="sequenceShow" id="sequenceShow"></div>
+
+<div class="selectedLabel">Your Selection ❤️</div>
+<div class="selectedSequence" id="selectedSequence"></div>
+
+<div class="sequenceHint" id="sequenceHint">
+Watch carefully... 👀❤️
+</div>
+
+<div class="lifeText">
+❤️ Lives: <span id="sequenceLives2">3</span>
+</div>
+
+<div class="sequenceButtons" id="sequenceButtons"></div>
+
+<button id="sequenceNext"
+class="yes playBtn nextLevel"
+onclick="nextSequenceLevel()">
+Next Level ❤️ →
+</button>
+
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- GAME POPUP -->
+<div class="gamePopup" id="gamePopup">
+<div class="popupBox">
+<div class="popupIcon">🏆❤️</div>
+<h2 id="gamePopupTitle">Game Over</h2>
+<p id="gamePopupText">Your score ❤️</p>
+<button class="close" onclick="closeGamePopup()">Okay ❤️</button>
+</div>
+</div>
+<section class="finalShayari" aria-label="A little love shayari">
+  <div class="shayariDecor">♡ ✦ 💗 ✦ ♡</div>
+  <h2>A Little Something From My Heart 💌</h2>
+  <p>Na jaane kya baat hai tum mein,<br>
+  Har baar dil tum par hi ruk jaata hai…<br>
+  Kitna bhi busy rahu main,<br>
+  Khayaal tumhara aa hi jaata hai. ❤️</p>
+  <div class="shayariEnd">♡ Always, with love ♡</div>
+</section>
+
+</div>
+
+
+
+<script>
+
+/* FLOATING HEARTS */
+
+const heartList=["❤️","💕","💗","💖","🩷"];
+
+function createHeart(){
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML=heartList[Math.floor(Math.random()*heartList.length)];
+ h.style.left=Math.random()*100+"%";
+ h.style.fontSize=14+Math.random()*18+"px";
+ h.style.animationDuration=6+Math.random()*5+"s";
+ document.getElementById("hearts").appendChild(h);
+ setTimeout(()=>h.remove(),11000);
+}
+
+setInterval(createHeart,550);
+for(let i=0;i<8;i++)createHeart();
+
+/* SECRET CODE */
+
+let inputs=document.querySelectorAll(".codeInput");
+
+inputs.forEach((input,i)=>{
+ input.addEventListener("input",()=>{
+  if(input.value&&i<3)inputs[i+1].focus();
+ });
+});
+
+function makeCode(){
+ let code="";
+ inputs.forEach(x=>code+=x.value);
+ document.getElementById("passcode").value=code;
+}
+
+function validateSecret(event){
+ event.preventDefault();
+ makeCode();
+ const code=document.getElementById("passcode").value;
+ const error=document.getElementById("codeError");
+ if(code === "0204"){
+   error.textContent="";
+   document.getElementById("lockPage").style.display="none";
+   document.getElementById("question").style.display="flex";
+   window.scrollTo({top:0,behavior:"smooth"});
+ }else{
+   error.textContent="Wrong secret code 😏❤️";
+   inputs.forEach(input=>input.value="");
+   if(inputs[0]) inputs[0].focus();
+ }
+ return false;
+}
+
+function openSecretPage(){
+ const landing=document.getElementById("landingPage");
+ const lock=document.getElementById("lockPage");
+ landing.style.display="none";
+ lock.classList.add("show");
+ window.scrollTo({top:0,behavior:"smooth"});
+ setTimeout(()=>{
+   const first=document.querySelector("#lockPage .codeInput");
+   if(first) first.focus();
+ },250);
+}
+
+/* TUM SE HI MUSIC — embedded from the official T-Series YouTube video.
+   Starts around 0:15 to skip a little of the instrumental intro, loops until Stop is clicked. */
+let loveMusicStarted=false;
+let loveMusicIsPlaying=true;
+function setMusicButton(){
+ const btn=document.getElementById("stopLoveMusic");
+ const label=document.querySelector("#loveMusicBar .musicLabel");
+ if(btn)btn.textContent=loveMusicIsPlaying?"Stop ♡":"Play ♡";
+ if(label)label.textContent=loveMusicIsPlaying?"Tum Se Hi · playing for you ❤️":"Tum Se Hi · paused ♡";
+}
+function startLoveMusic(){
+ const holder=document.getElementById("loveMusicPlayer");
+ const bar=document.getElementById("loveMusicBar");
+ if(!holder||!bar)return;
+ bar.style.display="flex";
+ if(!loveMusicStarted){
+  const frame=document.createElement("iframe");
+  frame.id="tumSeHiFrame";
+  frame.width="200"; frame.height="113";
+  frame.src="https://www.youtube-nocookie.com/embed/mt9xg0mmt28?autoplay=1&start=15&loop=1&playlist=mt9xg0mmt28&controls=0&playsinline=1&enablejsapi=1";
+  frame.title="Tum Se Hi background music";
+  frame.allow="autoplay; encrypted-media; picture-in-picture";
+  frame.referrerPolicy="strict-origin-when-cross-origin";
+  frame.style.border="0";
+  holder.appendChild(frame);
+  loveMusicStarted=true;
+ }else{
+  const frame=document.getElementById("tumSeHiFrame");
+  if(frame)frame.contentWindow.postMessage(JSON.stringify({event:"command",func:"playVideo",args:""}),"*");
+ }
+ loveMusicIsPlaying=true;
+ setMusicButton();
+}
+function stopLoveMusic(){
+ const frame=document.getElementById("tumSeHiFrame");
+ if(frame)frame.contentWindow.postMessage(JSON.stringify({event:"command",func:"stopVideo",args:""}),"*");
+ loveMusicIsPlaying=false;
+ setMusicButton();
+}
+function toggleLoveMusic(){
+ if(loveMusicIsPlaying)stopLoveMusic();
+ else startLoveMusic();
+}
+
+/* YES / NO */
+
+function sayYes(){
+ startLoveMusic();
+ document.getElementById("question").style.display="none";
+ document.getElementById("surprise").style.display="block";
+ window.scrollTo({top:0,behavior:"smooth"});
+ for(let i=0;i<15;i++)setTimeout(createHeart,i*100);
+}
+
+function sayNo(){
+ document.getElementById("question").style.display="none";
+ document.getElementById("noScreen").style.display="flex";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function tryAgain(){
+ document.getElementById("noScreen").style.display="none";
+ document.getElementById("question").style.display="flex";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* REASONS */
+
+const reasons=[
+["😊","Your smile is one of my favourite things in this world. It can make even my worst day feel better. ❤️"],
+["🤪","Tum agar normal hote toh shayad mujhe itna pyaar hi na hota… luckily, you’re perfectly crazy. ❤️"],
+["🤗","Your hugs feel like my favourite place. Whenever you hold me, everything somehow feels okay. 🤍"],
+["❤️","Tum main  irritate karne ka talent hai… aur mujhe tumhari har irritation secretly cute lagti hai."],
+["🫀","You have such a beautiful heart.Na koi perfect chahiye, na koi better… bas tum. Aaj bhi, kal bhi, har baar tum. 💕"],
+["🫶","The way you love me makes me feel wanted, special and safe. I would never trade that feeling for anything. ❤️"]
+];
+
+function openReason(i){
+ document.getElementById("popupIcon").innerHTML=reasons[i][0];
+ document.getElementById("popupTitle").innerHTML=reasons[i][1];
+ document.getElementById("popupText").innerHTML=reasons[i][2];
+ document.getElementById("reasonPopup").style.display="flex";
+}
+
+function closeReason(){
+ document.getElementById("reasonPopup").style.display="none";
+}
+
+/* LET'S KNOW EACH OTHER'S THOUGHTS */
+
+const thoughtQuestions=[
+
+{
+q:"If you were having the worst day ever, what would you want from me?",
+o:[
+"Just hold me",
+"Listen without trying to fix anything",
+"Make me laugh",
+"Give me some space but stay close"
+]
+},
+
+{
+q:"When do you feel most loved by me?",
+o:[
+"When I listen to you",
+"When I check on you",
+"When I hug you",
+"When I simply stay beside you"
+]
+},
+
+{
+q:"What's one small thing I could do every day that would make your life happier?",
+o:[
+"Send a sweet good-morning or good-night message 💌",
+"Check in and ask how my day is going 🥹",
+"Give me a little hug or affection 🤗",
+"Make time for us, even on busy days ❤️"
+]
+},
+
+{
+q:"If you were having a terrible day and I suddenly appeared, what would you want first?",
+o:[
+"A hug",
+"To talk to me",
+"Just sit beside me",
+"Nothing—I'd already feel better seeing you 🥹"
+]
+},
+
+{
+q:"If you could hear me say one thing to you right now, what would you want it to be?",
+o:[
+"“I’m proud of you.”",
+"“I’m always here for you.”",
+"“I love you.”",
+"“I choose you, always.” ❤️"
+]
+},
+
+{
+q:"If we ever went through a phase where life got too busy, how would you want us to keep our connection strong?",
+o:[
+"Have a little quality time every day, even if it's short ❤️",
+"Send messages or voice notes whenever we can 💌",
+"Plan a proper date or call each week 🥹",
+"Keep reassuring each other that we're still a priority 🤍"
+]
+},
+
+{
+q:"When you feel low but don't want to talk, how would you want me to treat you?",
+o:[
+"Stay close and quietly keep me company 🤍",
+"Give me some space but check on me later 🫶",
+"Hug me without asking too many questions 🤗",
+"Gently remind me you're here whenever I'm ready ❤️"
+]
+},
+
+{
+q:"After a big fight, what matters most?",
+o:[
+"Who was right",
+"Who apologized",
+"Understanding what went wrong",
+"Choosing each other again ❤️"
+]
+}
+
+];
+
+// Clear only the three replaced questions' old saved choices once, so outdated answers do not appear selected.
+if(localStorage.getItem("loveThoughtQuestionVersion") !== "updated-2026-10-17"){
+ [2,5,6].forEach(i=>localStorage.removeItem("loveThought_"+i));
+ localStorage.setItem("loveThoughtQuestionVersion","updated-2026-10-17");
+}
+
+let currentThoughtIndex = 0;
+
+function loadThoughts(){
+ let box=document.getElementById("thoughtsQuiz");
+ if(!box)return;
+ box.innerHTML="";
+
+ const item=thoughtQuestions[currentThoughtIndex];
+ if(!item)return;
+ const saved=localStorage.getItem("loveThought_"+currentThoughtIndex);
+
+ let card=document.createElement("div");
+ card.className="thoughtCard open currentThoughtCard";
+ card.setAttribute("aria-live","polite");
+
+ let top=document.createElement("div");
+ top.className="thoughtProgress";
+ top.innerHTML='<span>QUESTION '+(currentThoughtIndex+1)+' OF '+thoughtQuestions.length+'</span><span>'+'❤️ '.repeat(currentThoughtIndex+1)+'</span>';
+ card.appendChild(top);
+
+ let h=document.createElement("h3");
+ h.innerHTML=(currentThoughtIndex+1)+". "+item.q;
+ card.appendChild(h);
+
+ let hint=document.createElement("div");
+ hint.className="thoughtOpenHint";
+ hint.innerHTML="CHOOSE ONE ANSWER ❤️";
+ card.appendChild(hint);
+
+ let content=document.createElement("div");
+ content.className="thoughtContent";
+ content.style.display="block";
+
+ let options=document.createElement("div");
+ options.className="thoughtOptionsList";
+ item.o.forEach((option,j)=>{
+  let b=document.createElement("button");
+  b.type="button";
+  b.className="thoughtOption"+(saved!==null&&Number(saved)===j?" selected":"");
+  b.innerHTML=String.fromCharCode(65+j)+". "+option;
+  b.onclick=()=>{
+   const current=localStorage.getItem("loveThought_"+currentThoughtIndex);
+   if(current!==null&&Number(current)===j){
+    localStorage.removeItem("loveThought_"+currentThoughtIndex);
+    b.classList.remove("selected");
+    hint.innerHTML="ANSWER CLEARED — CHOOSE AGAIN ❤️";
+   }else{
+    options.querySelectorAll(".thoughtOption").forEach(x=>x.classList.remove("selected"));
+    b.classList.add("selected");
+    localStorage.setItem("loveThought_"+currentThoughtIndex,j);
+    hint.innerHTML="ANSWER SAVED ❤️";
+   }
+  };
+  options.appendChild(b);
+ });
+ content.appendChild(options);
+
+ let nav=document.createElement("div");
+ nav.className="thoughtNav";
+ let prev=document.createElement("button");
+ prev.type="button";prev.className="thoughtNavBtn thoughtPrev";prev.innerHTML="← Previous";
+ prev.disabled=currentThoughtIndex===0;
+ prev.onclick=()=>{if(currentThoughtIndex>0){currentThoughtIndex--;loadThoughts();}};
+ let next=document.createElement("button");
+ next.type="button";next.className="thoughtNavBtn thoughtNext";
+ next.innerHTML=currentThoughtIndex===thoughtQuestions.length-1?"Finish ❤️":"Next Question →";
+ next.onclick=()=>{
+  if(currentThoughtIndex<thoughtQuestions.length-1){
+   currentThoughtIndex++;loadThoughts();
+   document.getElementById("thoughtsQuiz").scrollIntoView({behavior:"smooth",block:"center"});
+  }else{
+   box.innerHTML='<div class="thoughtFinish"><div class="finishEmoji">💌❤️</div><h3>All questions completed!</h3><p>Your answers are saved. You can go back anytime to change them. 🥹</p><button type="button" class="thoughtNavBtn thoughtNext" onclick="currentThoughtIndex=0;loadThoughts()">Review Answers ↺</button></div>';
+  }
+ };
+ nav.appendChild(prev);nav.appendChild(next);content.appendChild(nav);
+ card.appendChild(content);
+ box.appendChild(card);
+}
+
+function openThoughtsQuiz(){
+ let quiz=document.getElementById("thoughtsQuiz");
+ let box=document.querySelector(".thoughtRevealBox");
+
+ if(!quiz)return;
+
+ if(quiz.style.display==="none" || quiz.style.display===""){
+  quiz.style.display="block";
+  loadThoughts();
+  if(box)box.style.display="none";
+  setTimeout(()=>{
+   quiz.scrollIntoView({behavior:"smooth",block:"start"});
+  },100);
+ }
+}
+
+/* ONE GAME AT A TIME */
+
+let activeGame=null;
+
+function lockOtherGames(game){
+
+ activeGame=game;
+
+ ["gameCard1","gameCard2","gameCard3","gameCard4"].forEach(id=>{
+
+  let card=document.getElementById(id);
+
+  if(id!==game)card.classList.add("gameLocked");
+  else card.classList.remove("gameLocked");
+
+ });
+
+}
+
+function unlockGames(){
+
+ activeGame=null;
+
+ ["gameCard1","gameCard2","gameCard3","gameCard4"].forEach(id=>{
+  document.getElementById(id).classList.remove("gameLocked");
+ });
+
+}
+
+/* GAME 1 */
+
+let treasureScore=0,treasureLives=3;
+let treasureRunning=false,treasurePaused=false,treasureTimer=null;
+
+function startTreasureGame(){
+
+ if(activeGame)return;
+
+ lockOtherGames("gameCard1");
+
+ treasureScore=0;
+ treasureLives=3;
+ treasureRunning=true;
+ treasurePaused=false;
+
+ document.getElementById("treasureScore").innerHTML=0;
+ document.getElementById("treasureLives").innerHTML=3;
+ document.getElementById("treasureGame").style.display="block";
+ document.getElementById("treasureStart").style.display="none";
+ document.getElementById("treasurePause").innerHTML="⏸ Pause";
+
+ let arena=document.getElementById("treasureArena");
+ arena.querySelectorAll(".fallingTreasure").forEach(x=>x.remove());
+
+ clearInterval(treasureTimer);
+ treasureTimer=setInterval(dropTreasure,650);
+}
+
+function pauseTreasure(){
+
+ if(!treasureRunning)return;
+
+ treasurePaused=!treasurePaused;
+
+ document.getElementById("treasurePause").innerHTML=
+ treasurePaused?"▶ Resume":"⏸ Pause";
+}
+
+function closeTreasure(){
+
+ treasureRunning=false;
+ treasurePaused=false;
+
+ clearInterval(treasureTimer);
+
+ document.querySelectorAll(".fallingTreasure").forEach(x=>x.remove());
+
+ document.getElementById("treasureGame").style.display="none";
+ document.getElementById("treasureStart").style.display="inline-block";
+
+ unlockGames();
+}
+
+function dropTreasure(){
+
+ if(!treasureRunning||treasurePaused)return;
+
+ let arena=document.getElementById("treasureArena");
+ let item=document.createElement("div");
+
+ item.className="fallingTreasure";
+
+ let r=Math.random();
+
+ if(r<.35){
+  item.innerHTML="❤️";item.dataset.type="heart";
+ }
+ else if(r<.50){
+  item.innerHTML="💔";item.dataset.type="broken";
+ }
+ else if(r<.62){
+  item.innerHTML="💣";item.dataset.type="bomb";
+ }
+ else if(r<.81){
+  item.innerHTML="🌹";item.dataset.type="flower";
+ }
+ else{
+  item.innerHTML="💎";item.dataset.type="diamond";
+ }
+
+ item.style.left=Math.random()*88+"%";
+ item.style.top="-35px";
+ arena.appendChild(item);
+
+ let start=Date.now();
+ let duration=2200+Math.random()*1000;
+
+ function fall(){
+
+  if(!treasureRunning){
+   item.remove();
+   return;
+  }
+
+  if(treasurePaused){
+   requestAnimationFrame(fall);
+   return;
+  }
+
+  let progress=(Date.now()-start)/duration;
+  item.style.top=progress*(arena.clientHeight+50)+"px";
+
+  let player=document.getElementById("player");
+  let a=item.getBoundingClientRect();
+  let b=player.getBoundingClientRect();
+
+  if(
+   a.bottom>=b.top&&
+   a.left<b.right&&
+   a.right>b.left&&
+   !item.dataset.caught
+  ){
+
+   item.dataset.caught="1";
+
+   if(item.dataset.type==="heart"){
+    treasureScore++;
+    document.getElementById("treasureScore").innerHTML=treasureScore;
+   }
+   else if(item.dataset.type==="broken"){
+    treasureLives--;
+    document.getElementById("treasureLives").innerHTML=treasureLives;
+    if(treasureLives<=0)endTreasureGame();
+   }
+   else if(item.dataset.type==="bomb"){
+    endTreasureGame();
+   }
+
+   setTimeout(()=>item.remove(),100);
+   return;
+  }
+
+  if(progress<1)requestAnimationFrame(fall);
+  else item.remove();
+ }
+
+ requestAnimationFrame(fall);
+}
+
+function endTreasureGame(){
+
+ treasureRunning=false;
+ clearInterval(treasureTimer);
+
+ document.querySelectorAll(".fallingTreasure").forEach(x=>x.remove());
+
+ document.getElementById("treasureGame").style.display="none";
+ document.getElementById("treasureStart").style.display="inline-block";
+
+ unlockGames();
+
+ showGame(
+ "GAME OVER 💔",
+ "You caught a bomb or 3 broken hearts! Final score: "+
+ treasureScore+" ❤️"
+ );
+}
+
+let playerPosition=50;
+
+function movePlayer(x){
+
+ let arena=document.getElementById("treasureArena");
+ if(!arena)return;
+
+ let rect=arena.getBoundingClientRect();
+
+ playerPosition=((x-rect.left)/rect.width)*100;
+ playerPosition=Math.max(8,Math.min(92,playerPosition));
+
+ document.getElementById("player").style.left=playerPosition+"%";
+}
+
+let treasureArena=document.getElementById("treasureArena");
+
+if(treasureArena){
+
+ treasureArena.addEventListener("mousemove",e=>{
+  if(treasureRunning&&!treasurePaused)movePlayer(e.clientX);
+ });
+
+ treasureArena.addEventListener("touchmove",e=>{
+  if(treasureRunning&&!treasurePaused)
+   movePlayer(e.touches[0].clientX);
+ },{passive:true});
+
+}
+
+document.addEventListener("keydown",e=>{
+
+ if(!treasureRunning||treasurePaused)return;
+
+ if(e.key==="ArrowLeft")playerPosition-=5;
+ if(e.key==="ArrowRight")playerPosition+=5;
+
+ playerPosition=Math.max(8,Math.min(92,playerPosition));
+
+ document.getElementById("player").style.left=playerPosition+"%";
+});
+
+/* GAME 2 */
+
+let balloonScore=0,balloonTime=40,balloonCombo=0;
+let balloonRunning=false,balloonPaused=false;
+let balloonTimer=null,balloonSpawner=null;
+
+function startBalloonGame(){
+
+ if(activeGame)return;
+
+ lockOtherGames("gameCard2");
+
+ balloonScore=0;
+ balloonTime=40;
+ balloonCombo=0;
+ balloonRunning=true;
+ balloonPaused=false;
+
+ document.getElementById("balloonScore").innerHTML=0;
+ document.getElementById("balloonTime").innerHTML=40;
+ document.getElementById("balloonCombo").innerHTML=0;
+
+ document.getElementById("balloonGame").style.display="block";
+ document.getElementById("balloonStart").style.display="none";
+ document.getElementById("balloonPause").innerHTML="⏸ Pause";
+
+ let arena=document.getElementById("balloonArena");
+
+ arena.querySelectorAll(".balloon,.popEffect")
+ .forEach(x=>x.remove());
+
+ clearInterval(balloonTimer);
+ clearInterval(balloonSpawner);
+
+ balloonTimer=setInterval(()=>{
+
+  if(!balloonRunning||balloonPaused)return;
+
+  balloonTime--;
+  document.getElementById("balloonTime").innerHTML=balloonTime;
+
+  if(balloonTime<=0)endBalloonGame(false);
+
+ },1000);
+
+ balloonSpawner=setInterval(spawnBalloon,600);
+
+ for(let i=0;i<5;i++)
+  setTimeout(spawnBalloon,i*150);
+}
+
+function pauseBalloon(){
+
+ if(!balloonRunning)return;
+
+ balloonPaused=!balloonPaused;
+
+ document.getElementById("balloonPause").innerHTML=
+ balloonPaused?"▶ Resume":"⏸ Pause";
+}
+
+function closeBalloon(){
+
+ balloonRunning=false;
+ balloonPaused=false;
+
+ clearInterval(balloonTimer);
+ clearInterval(balloonSpawner);
+
+ document.querySelectorAll("#balloonArena .balloon")
+ .forEach(x=>x.remove());
+
+ document.getElementById("balloonGame").style.display="none";
+ document.getElementById("balloonStart").style.display="inline-block";
+
+ unlockGames();
+}
+
+function spawnBalloon(){
+
+ if(!balloonRunning||balloonPaused)return;
+
+ let arena=document.getElementById("balloonArena");
+ let balloon=document.createElement("div");
+
+ balloon.className="balloon";
+
+ let r=Math.random();
+
+ if(r<.40){
+  balloon.innerHTML="❤️";
+  balloon.onclick=()=>popBalloon(balloon);
+ }
+ else if(r<.50)balloon.innerHTML="💕";
+ else if(r<.58)balloon.innerHTML="💋";
+ else if(r<.68)balloon.innerHTML="💖";
+ else if(r<.76)balloon.innerHTML="🌹";
+ else if(r<.81)balloon.innerHTML="💛";
+ else if(r<.88){
+  balloon.innerHTML="💔";
+  balloon.onclick=()=>brokenBalloon(balloon);
+ }
+ else if(r<.95)balloon.innerHTML="😈";
+ else{
+  balloon.innerHTML="💣";
+  balloon.onclick=()=>hitBomb(balloon);
+ }
+
+ let maxX=Math.max(10,arena.clientWidth-60);
+ let maxY=Math.max(40,arena.clientHeight-70);
+
+ balloon.style.left=Math.random()*maxX+"px";
+ balloon.style.top=30+Math.random()*maxY+"px";
+
+ arena.appendChild(balloon);
+
+ setTimeout(()=>{
+  if(balloon.parentNode)balloon.remove();
+ },2600);
+}
+
+function popBalloon(balloon){
+
+ if(!balloonRunning||balloonPaused||balloon.dataset.clicked)return;
+
+ balloon.dataset.clicked="1";
+ balloonCombo++;
+ balloonScore++;
+
+ document.getElementById("balloonScore").innerHTML=balloonScore;
+ document.getElementById("balloonCombo").innerHTML=balloonCombo;
+
+ showPop(balloon,"❤️ +1");
+
+ setTimeout(()=>{if(balloon.parentNode)balloon.remove()},100);
+}
+
+function brokenBalloon(balloon){
+
+ if(!balloonRunning||balloonPaused||balloon.dataset.clicked)return;
+
+ balloon.dataset.clicked="1";
+ balloonScore--;
+ balloonCombo=0;
+
+ document.getElementById("balloonScore").innerHTML=balloonScore;
+ document.getElementById("balloonCombo").innerHTML=0;
+
+ showPop(balloon,"💔 -1");
+
+ setTimeout(()=>{if(balloon.parentNode)balloon.remove()},100);
+}
+
+function hitBomb(balloon){
+
+ if(!balloonRunning||balloonPaused)return;
+
+ showPop(balloon,"💥 BOOM!");
+
+ setTimeout(()=>{
+  if(balloon.parentNode)balloon.remove();
+  endBalloonGame(true);
+ },250);
+}
+
+function showPop(balloon,text){
+
+ let arena=document.getElementById("balloonArena");
+ let effect=document.createElement("div");
+
+ effect.className="popEffect";
+ effect.innerHTML=text;
+ effect.style.left=balloon.style.left;
+ effect.style.top=balloon.style.top;
+
+ arena.appendChild(effect);
+
+ setTimeout(()=>effect.remove(),500);
+}
+
+function endBalloonGame(bomb){
+
+ if(!balloonRunning)return;
+
+ balloonRunning=false;
+
+ clearInterval(balloonTimer);
+ clearInterval(balloonSpawner);
+
+ document.querySelectorAll("#balloonArena .balloon").forEach(x=>x.remove());
+
+ document.getElementById("balloonGame").style.display="none";
+ document.getElementById("balloonStart").style.display="inline-block";
+
+ unlockGames();
+
+ showGame(
+ bomb?"BOOM! 💣💔":"TIME'S UP! 🎈❤️",
+ bomb?
+ "You touched the bomb! Game Over 😭❤️ Final score: "+balloonScore:
+ "40 seconds are over! Final score: "+balloonScore+" ❤️"
+ );
+}
+
+/* GAME 3 */
+
+const memorySymbols=["❤️","🌹","💍","💋","💌","💕","💖","🩷"];
+
+let memoryMode=1,memoryCards=[],memoryFirst=null,memorySecond=null;
+let memoryLock=false,memoryScore=0,memoryPairs=0;
+let memoryRunning=false,memoryPaused=false,memoryPlayer=1;
+let memoryScores=[0,0];
+
+function chooseMemoryMode(){
+
+ if(activeGame)return;
+
+ document.getElementById("memoryStart").style.display="none";
+ document.getElementById("memoryMode").style.display="block";
+}
+
+function startMemory(mode){
+
+ if(activeGame)return;
+
+ lockOtherGames("gameCard3");
+
+ memoryMode=mode;
+ memoryScore=0;
+ memoryPairs=0;
+ memoryPlayer=1;
+ memoryScores=[0,0];
+
+ memoryFirst=null;
+ memorySecond=null;
+ memoryLock=false;
+ memoryRunning=true;
+ memoryPaused=false;
+
+ document.getElementById("memoryMode").style.display="none";
+ document.getElementById("memoryGameBox").style.display="block";
+ document.getElementById("memoryStart").style.display="none";
+
+ document.getElementById("memoryScore").innerHTML=0;
+ document.getElementById("memoryPairs").innerHTML=0;
+ document.getElementById("memoryTurn").innerHTML="Player 1";
+ document.getElementById("memoryPause").innerHTML="⏸ Pause";
+
+ memoryCards=[...memorySymbols,...memorySymbols]
+ .sort(()=>Math.random()-.5);
+
+ let board=document.getElementById("memoryBoard");
+ board.innerHTML="";
+
+ memoryCards.forEach((symbol,index)=>{
+
+  let card=document.createElement("button");
+
+  card.className="memoryCard";
+  card.innerHTML="💗";
+  card.dataset.symbol=symbol;
+  card.dataset.index=index;
+  card.dataset.open="0";
+  card.dataset.matched="0";
+
+  card.onclick=()=>flipMemory(card);
+
+  board.appendChild(card);
+ });
+}
+
+function flipMemory(card){
+
+ if(!memoryRunning||memoryPaused||memoryLock)return;
+
+ if(card.dataset.open==="1"||card.dataset.matched==="1")return;
+
+ card.dataset.open="1";
+ card.classList.add("flipped");
+ card.innerHTML=card.dataset.symbol;
+
+ if(!memoryFirst){
+  memoryFirst=card;
+  return;
+ }
+
+ memorySecond=card;
+ memoryLock=true;
+
+ setTimeout(checkMemoryPair,500);
+}
+
+function checkMemoryPair(){
+
+ if(!memoryFirst||!memorySecond)return;
+
+ let first=memoryFirst;
+ let second=memorySecond;
+
+ if(first.dataset.symbol===second.dataset.symbol){
+
+  first.dataset.matched="1";
+  second.dataset.matched="1";
+
+  first.classList.add("matched");
+  second.classList.add("matched");
+
+  memoryPairs++;
+
+  if(memoryMode===1)memoryScore+=20;
+  else{
+   memoryScores[memoryPlayer-1]+=20;
+   memoryScore=memoryScores[0]+memoryScores[1];
+  }
+
+  document.getElementById("memoryScore").innerHTML=memoryScore;
+  document.getElementById("memoryPairs").innerHTML=memoryPairs;
+
+  memoryFirst=null;
+  memorySecond=null;
+  memoryLock=false;
+
+  if(memoryPairs===8)endMemory();
+
+ }else{
+
+  setTimeout(()=>{
+
+   first.dataset.open="0";
+   second.dataset.open="0";
+
+   first.classList.remove("flipped");
+   second.classList.remove("flipped");
+
+   first.innerHTML="💗";
+   second.innerHTML="💗";
+
+   memoryFirst=null;
+   memorySecond=null;
+   memoryLock=false;
+
+   if(memoryMode===2){
+    memoryPlayer=memoryPlayer===1?2:1;
+    document.getElementById("memoryTurn").innerHTML="Player "+memoryPlayer;
+   }
+
+  },700);
+ }
+}
+
+function pauseMemory(){
+
+ if(!memoryRunning)return;
+
+ memoryPaused=!memoryPaused;
+
+ document.getElementById("memoryPause").innerHTML=
+ memoryPaused?"▶ Resume":"⏸ Pause";
+}
+
+function closeMemory(){
+
+ memoryRunning=false;
+ memoryPaused=false;
+ memoryLock=false;
+
+ memoryFirst=null;
+ memorySecond=null;
+
+ document.getElementById("memoryGameBox").style.display="none";
+ document.getElementById("memoryMode").style.display="none";
+ document.getElementById("memoryStart").style.display="block";
+
+ unlockGames();
+}
+
+function endMemory(){
+
+ memoryRunning=false;
+ memoryPaused=false;
+
+ let message="";
+
+ if(memoryMode===1){
+
+  message=
+  "🥹 YOU FOUND ALL MY LOVE! ❤️<br><br>"+
+  "All 8 pairs matched!<br>"+
+  "Final Score: "+memoryScore+" ❤️";
+
+ }else{
+
+  if(memoryScores[0]>memoryScores[1])
+   message="🏆 PLAYER 1 WINS! ❤️<br><br>"+
+   "Player 1: "+memoryScores[0]+"<br>Player 2: "+memoryScores[1];
+
+  else if(memoryScores[1]>memoryScores[0])
+   message="🏆 PLAYER 2 WINS! ❤️<br><br>"+
+   "Player 1: "+memoryScores[0]+"<br>Player 2: "+memoryScores[1];
+
+  else
+   message="💕 IT'S A TIE! 💕<br><br>"+
+   "Both players scored "+memoryScores[0]+" ❤️";
+ }
+
+ document.getElementById("memoryGameBox").style.display="none";
+ document.getElementById("memoryStart").style.display="block";
+
+ unlockGames();
+
+ showGame("MEMORY COMPLETE! 💏❤️",message);
+}
+
+/* GAME 4 - LOVE SEQUENCE */
+
+const sequenceObjects=[
+"❤️","🌹","💍","💌","💋",
+"💕","💖","🩷","💗","💘"
+];
+
+let sequenceLevel=1,sequenceLives=3;
+let sequenceRunning=false,sequencePaused=false;
+let sequence=[],sequenceIndex=0;
+let sequenceShowing=false,sequenceWaitingNext=false;
+let sequenceTimeout=null;
+
+function startSequenceGame(){
+
+ if(activeGame)return;
+
+ lockOtherGames("gameCard4");
+
+ sequenceLevel=1;
+ sequenceLives=3;
+ sequenceRunning=true;
+ sequencePaused=false;
+ sequenceWaitingNext=false;
+
+ document.getElementById("sequenceStart").style.display="none";
+ document.getElementById("sequenceGame").style.display="block";
+ document.getElementById("sequencePause").innerHTML="⏸ Pause";
+
+ updateSequenceInfo();
+ startSequenceLevel();
+}
+
+function getSequenceLength(){
+ return [0,3,4,6,8,10][sequenceLevel];
+}
+
+function startSequenceLevel(){
+
+ if(!sequenceRunning)return;
+
+ sequenceIndex=0;
+ sequenceShowing=true;
+ sequenceWaitingNext=false;
+
+ let length=getSequenceLength();
+ sequence=[];
+
+ for(let i=0;i<length;i++){
+  sequence.push(
+   sequenceObjects[
+    Math.floor(Math.random()*sequenceObjects.length)
+   ]
+  );
+ }
+
+ document.getElementById("selectedSequence").innerHTML="";
+ document.getElementById("sequenceNext").style.display="none";
+ document.getElementById("sequenceButtons").style.display="none";
+
+ document.getElementById("sequenceHint").innerHTML=
+ "👀 Remember the sequence carefully! ❤️";
+
+ let show=document.getElementById("sequenceShow");
+ show.innerHTML="";
+
+ sequence.forEach(obj=>{
+  let el=document.createElement("div");
+  el.className="sequenceObject";
+  el.innerHTML=obj;
+  show.appendChild(el);
+ });
+
+ let displayTime=sequenceLevel>=4?9000:7000;
+
+ clearTimeout(sequenceTimeout);
+
+ sequenceTimeout=setTimeout(()=>{
+
+  if(!sequenceRunning)return;
+
+  if(sequencePaused)waitSequenceResume();
+  else hideSequence();
+
+ },displayTime);
+}
+
+function waitSequenceResume(){
+
+ if(!sequenceRunning)return;
+
+ if(sequencePaused)
+  sequenceTimeout=setTimeout(waitSequenceResume,300);
+ else hideSequence();
+}
+
+function hideSequence(){
+
+ if(!sequenceRunning)return;
+
+ sequenceShowing=false;
+
+ document.getElementById("sequenceShow").innerHTML=
+ `<div style="font-size:18px;color:#ffabc5;text-align:center">
+ Your Turn ❤️<br>
+ <span style="font-size:11px">
+ Select the objects in the same order
+ </span>
+ </div>`;
+
+ document.getElementById("sequenceHint").innerHTML="❤️ Choose carefully!";
+ document.getElementById("sequenceButtons").style.display="grid";
+
+ createSequenceButtons();
+}
+
+function createSequenceButtons(){
+
+ let box=document.getElementById("sequenceButtons");
+ box.innerHTML="";
+
+ let shuffled=[...sequenceObjects].sort(()=>Math.random()-.5);
+
+ shuffled.forEach(obj=>{
+
+  let btn=document.createElement("button");
+
+  btn.className="seqBtn";
+  btn.innerHTML=obj;
+
+  /* SAME EMOJI CAN BE SELECTED MORE THAN ONCE */
+  btn.onclick=()=>sequenceClick(obj,btn);
+
+  box.appendChild(btn);
+ });
+}
+
+function sequenceClick(obj,btn){
+
+ if(!sequenceRunning||sequencePaused||sequenceShowing||sequenceWaitingNext)return;
+
+ let correct=sequence[sequenceIndex];
+
+ if(obj===correct){
+
+  let selected=document.getElementById("selectedSequence");
+  let selectedItem=document.createElement("span");
+
+  selectedItem.className="selectedItem";
+  selectedItem.innerHTML=obj;
+  selected.appendChild(selectedItem);
+
+  btn.classList.add("correctFlash");
+
+  setTimeout(()=>btn.classList.remove("correctFlash"),250);
+
+  sequenceIndex++;
+
+  document.getElementById("sequenceHint").innerHTML=
+  "❤️ Correct! "+sequenceIndex+"/"+sequence.length;
+
+  if(sequenceIndex===sequence.length){
+
+   sequenceWaitingNext=true;
+
+   document.getElementById("sequenceHint").innerHTML=
+   "🎉 Level "+sequenceLevel+" Complete! ❤️";
+
+   document.getElementById("sequenceButtons").style.display="none";
+   document.getElementById("sequenceNext").style.display="inline-block";
+  }
+
+ }else{
+
+  sequenceLives--;
+  updateSequenceInfo();
+
+  btn.style.background="#ff174455";
+  btn.style.borderColor="#ff456d";
+
+  document.getElementById("sequenceHint").innerHTML=
+  "💔 Wrong! Sequence reset.";
+
+  sequenceIndex=0;
+  document.getElementById("selectedSequence").innerHTML="";
+
+  setTimeout(()=>{
+
+   if(!sequenceRunning)return;
+
+   if(sequenceLives<=0)endSequence();
+   else startSequenceLevel();
+
+  },1000);
+ }
+}
+
+function nextSequenceLevel(){
+
+ if(!sequenceRunning||!sequenceWaitingNext)return;
+
+ if(sequenceLevel===5){
+  sequenceComplete();
+  return;
+ }
+
+ sequenceLevel++;
+ sequenceWaitingNext=false;
+
+ document.getElementById("sequenceNext").style.display="none";
+
+ updateSequenceInfo();
+ startSequenceLevel();
+}
+
+function updateSequenceInfo(){
+
+ document.getElementById("sequenceLevel").innerHTML=sequenceLevel;
+ document.getElementById("sequenceLevel2").innerHTML=sequenceLevel;
+ document.getElementById("sequenceLives").innerHTML=sequenceLives;
+ document.getElementById("sequenceLives2").innerHTML=sequenceLives;
+}
+
+function pauseSequence(){
+
+ if(!sequenceRunning)return;
+
+ sequencePaused=!sequencePaused;
+
+ document.getElementById("sequencePause").innerHTML=
+ sequencePaused?"▶ Resume":"⏸ Pause";
+
+ if(!sequencePaused&&sequenceShowing){
+  clearTimeout(sequenceTimeout);
+  waitSequenceResume();
+ }
+}
+
+function closeSequence(){
+
+ sequenceRunning=false;
+ sequencePaused=false;
+ sequenceWaitingNext=false;
+
+ clearTimeout(sequenceTimeout);
+
+ document.getElementById("sequenceGame").style.display="none";
+ document.getElementById("sequenceStart").style.display="inline-block";
+
+ unlockGames();
+}
+
+function endSequence(){
+
+ sequenceRunning=false;
+ sequencePaused=false;
+ sequenceWaitingNext=false;
+
+ clearTimeout(sequenceTimeout);
+
+ document.getElementById("sequenceGame").style.display="none";
+ document.getElementById("sequenceStart").style.display="inline-block";
+
+ unlockGames();
+
+ showGame(
+ "GAME OVER 💔",
+ "You ran out of lives!<br><br>"+
+ "You reached Level "+sequenceLevel+". ❤️"
+ );
+}
+
+function sequenceComplete(){
+
+ sequenceRunning=false;
+ sequencePaused=false;
+ sequenceWaitingNext=false;
+
+ document.getElementById("sequenceGame").style.display="none";
+ document.getElementById("sequenceStart").style.display="inline-block";
+
+ unlockGames();
+
+ showGame(
+ "LOVE MASTER! 🧠❤️",
+ "You completed all 5 levels!<br><br>"+
+ "You remembered the final 10-object sequence! 🥹💕"
+ );
+}
+
+/* GAME POPUP */
+
+function showGame(title,text){
+
+ document.getElementById("gamePopupTitle").innerHTML=title;
+ document.getElementById("gamePopupText").innerHTML=text;
+ document.getElementById("gamePopup").style.display="flex";
+}
+
+function closeGamePopup(){
+ document.getElementById("gamePopup").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
